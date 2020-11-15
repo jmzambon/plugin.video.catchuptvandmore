@@ -43,16 +43,18 @@ except ImportError:
 # Add Replay
 
 URL_ROOT = 'https://www.ln24.be'
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/be/ln24.py
+
+URL_LIVE = URL_ROOT + '/direct'
+
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/be/canalc.py
 
 URL_LIVE = URL_ROOT + '/direct'
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE, max_age=-1)
     return re.compile(

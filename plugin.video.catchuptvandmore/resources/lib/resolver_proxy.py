@@ -39,6 +39,11 @@ import re
 import urlquick
 from kodi_six import xbmcgui
 
+try:
+    from urllib.parse import quote_plus
+except ImportError:
+    from urllib import quote_plus
+
 # TO DO
 # Quality VIMEO
 # Download Mode with Facebook (the video has no audio)
@@ -81,7 +86,7 @@ URL_MTVNSERVICES_STREAM_ACCOUNT_EP = 'https://media-utils.mtvnservices.com/servi
 URL_FRANCETV_LIVE_PROGRAM_INFO = 'https://sivideo.webservices.francetelevisions.fr/tools/getInfosOeuvre/v2/?idDiffusion=%s'
 # VideoId
 
-URL_FRANCETV_CATCHUP_PROGRAM_INFO = 'https://player.webservices.francetelevisions.fr/v1/videos/%s?country_code=%s&device_type=mobile&browser=chrome'
+URL_FRANCETV_CATCHUP_PROGRAM_INFO = 'https://player.webservices.francetelevisions.fr/v1/videos/%s?country_code=%s&device_type=desktop&browser=chrome'
 # VideoId
 
 URL_FRANCETV_HDFAUTH_URL = 'https://hdfauthftv-a.akamaihd.net/esi/TA?format=json&url=%s'
@@ -89,6 +94,12 @@ URL_FRANCETV_HDFAUTH_URL = 'https://hdfauthftv-a.akamaihd.net/esi/TA?format=json
 
 URL_DAILYMOTION_EMBED_2 = 'https://www.dailymotion.com/player/metadata/video/%s?integration=inline&GK_PV5_NEON=1'
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/resolver_proxy.py
+=======
+URL_REPLAY_ARTE = 'https://api.arte.tv/api/player/v1/config/%s/%s'
+# desired_language, videoid
+
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/resolver_proxy.py
 
 def get_stream_default(plugin,
                        video_url,
@@ -112,6 +123,7 @@ def get_stream_dailymotion(plugin,
                            video_id,
                            download_mode=False):
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/resolver_proxy.py
     # TODO reactivate when youtubedl is fixed
     # url_dailymotion = URL_DAILYMOTION_EMBED % video_id
     # return get_stream_default(plugin, url_dailymotion, download_mode)
@@ -151,6 +163,47 @@ def get_stream_dailymotion(plugin,
         if 'RESOLUTION=' in lines[k]:
             inside_m3u8 = lines[k + 1]
     return inside_m3u8.split('#cell')[0]
+=======
+    url_dailymotion = URL_DAILYMOTION_EMBED % video_id
+    return get_stream_default(plugin, url_dailymotion, download_mode)
+    # Code to reactivate when youtubedl is KO for dailymotion
+    # if download_mode:
+    #     return False
+    # url_dmotion = URL_DAILYMOTION_EMBED_2 % (video_id)
+    # resp = urlquick.get(url_dmotion, max_age=-1)
+    # json_parser = json.loads(resp.text)
+
+    # if "qualities" not in json_parser:
+    #     plugin.notify('ERROR', plugin.localize(30716))
+
+    # all_datas_videos_path = []
+    # if "auto" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["auto"][0]["url"])
+    # if "144" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["144"][1]["url"])
+    # if "240" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["240"][1]["url"])
+    # if "380" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["380"][1]["url"])
+    # if "480" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["480"][1]["url"])
+    # if "720" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["720"][1]["url"])
+    # if "1080" in json_parser["qualities"]:
+    #     all_datas_videos_path.append(json_parser["qualities"]["1080"][1]["url"])
+
+    # url_stream = ''
+    # for video_path in all_datas_videos_path:
+    #     url_stream = video_path
+
+    # manifest = urlquick.get(url_stream, max_age=-1)
+    # lines = manifest.text.splitlines()
+    # inside_m3u8 = ''
+    # for k in range(0, len(lines) - 1):
+    #     if 'RESOLUTION=' in lines[k]:
+    #         inside_m3u8 = lines[k + 1]
+    # return inside_m3u8.split('#cell')[0]
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/resolver_proxy.py
 
 
 # Vimeo Part
@@ -286,9 +339,11 @@ def get_francetv_video_stream(plugin,
                               download_mode=False):
 
     geoip_value = web_utils.geoip()
+    if not geoip_value:
+        geoip_value = 'FR'
     resp = urlquick.get(URL_FRANCETV_CATCHUP_PROGRAM_INFO % (id_diffusion, geoip_value),
                         max_age=-1)
-    json_parser = json.loads(resp.text)
+    json_parser = resp.json()
 
     if 'video' not in json_parser:
         plugin.notify('ERROR', plugin.localize(30716))
@@ -299,9 +354,9 @@ def get_francetv_video_stream(plugin,
     # Implementer Caption (found case)
     # Implement DRM (found case)
     if video_datas['drm'] is not None:
-        all_video_datas.append((video_datas['format'], 'True', video_datas['token']))
+        all_video_datas.append((video_datas['format'], video_datas['drm'], video_datas['token']))
     else:
-        all_video_datas.append((video_datas['format'], 'False', video_datas['token']))
+        all_video_datas.append((video_datas['format'], None, video_datas['token']))
 
     url_selected = all_video_datas[0][2]
     if 'hls' in all_video_datas[0][0]:
@@ -313,20 +368,32 @@ def get_francetv_video_stream(plugin,
         return final_video_url
     elif 'dash' in all_video_datas[0][0]:
         if download_mode:
-            xbmcgui.Dialog().ok('Info', plugin.localize(30603))
+            xbmcgui.Dialog().ok(plugin.localize(14116), plugin.localize(30603))
             return False
+
         is_helper = inputstreamhelper.Helper('mpd')
         if not is_helper.check_inputstream():
             return False
-        json_parser2 = json.loads(
-            urlquick.get(url_selected, max_age=-1).text)
+
         item = Listitem()
-        item.path = json_parser2['url']
         item.property['inputstreamaddon'] = 'inputstream.adaptive'
         item.property['inputstream.adaptive.manifest_type'] = 'mpd'
         item.label = get_selected_item_label()
         item.art.update(get_selected_item_art())
         item.info.update(get_selected_item_info())
+
+        if all_video_datas[0][1]:
+            item.path = video_datas['url']
+            token_request = json.loads('{"id": "%s", "drm_type": "%s", "license_type": "%s"}' % (id_diffusion, video_datas['drm_type'], video_datas['license_type']))
+            token = urlquick.post(video_datas['token'], json=token_request).json()['token']
+            license_request = '{"token": "%s", "drm_info": [D{SSM}]}' % token
+            license_key = 'https://widevine-proxy.drm.technology/proxy|Content-Type=application%%2Fjson|%s|' % quote_plus(license_request)
+            item.property['inputstream.adaptive.license_type'] = 'com.widevine.alpha'
+            item.property['inputstream.adaptive.license_key'] = license_key
+        else:
+            json_parser2 = json.loads(
+                urlquick.get(url_selected, max_age=-1).text)
+            item.path = json_parser2['url']
 
         return item
     else:
@@ -343,6 +410,8 @@ def get_francetv_live_stream(plugin, live_id):
 
     final_url = ''
     geoip_value = web_utils.geoip()
+    if not geoip_value:
+        geoip_value = 'FR'
     for video in json_parser_liveId['videos']:
         if 'format' in video:
             if 'hls_v' in video['format'] or video['format'] == 'hls':
@@ -360,3 +429,45 @@ def get_francetv_live_stream(plugin, live_id):
         urlquick.get(URL_FRANCETV_HDFAUTH_URL % (final_url), max_age=-1).text)
 
     return json_parser2['url']
+
+
+# Arte Part
+def get_arte_video_stream(plugin,
+                          desired_language,
+                          video_id,
+                          download_mode=False):
+
+    resp = urlquick.get(URL_REPLAY_ARTE % (desired_language, video_id))
+    json_parser = json.loads(resp.text)
+
+    url_selected = ''
+    stream_datas = json_parser['videoJsonPlayer']['VSR']
+
+    if DESIRED_QUALITY == "DIALOG":
+        all_datas_videos_quality = []
+        all_datas_videos_path = []
+
+        for video in stream_datas:
+            if not video.find("HLS"):
+                datas = json_parser['videoJsonPlayer']['VSR'][video]
+                all_datas_videos_quality.append(datas['mediaType'] + " (" +
+                                                datas['versionLibelle'] + ")")
+                all_datas_videos_path.append(datas['url'])
+
+        seleted_item = xbmcgui.Dialog().select(
+            plugin.localize(30709),
+            all_datas_videos_quality)
+        if seleted_item > -1:
+            url_selected = all_datas_videos_path[seleted_item]
+        else:
+            return False
+
+    elif DESIRED_QUALITY == "BEST":
+        url_selected = stream_datas['HTTPS_SQ_1']['url']
+    else:
+        url_selected = stream_datas['HTTPS_HQ_1']['url']
+
+    if download_mode:
+        return download.download_video(url_selected)
+
+    return url_selected

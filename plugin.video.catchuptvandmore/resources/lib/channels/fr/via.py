@@ -46,7 +46,7 @@ URL_ROOT = 'https://%s.tv'
 
 URL_LIVE = URL_ROOT + '/direct-tv/'
 
-URL_LIVE_VIAMIRABELLE = URL_ROOT + '/direct/'
+URL_LIVE_VIAMOSELLE = URL_ROOT + '/direct/'
 
 URL_ROOT_VIAVOSGES = 'https://www.viavosges.tv'
 
@@ -56,13 +56,6 @@ URL_STREAM = 'https://player.myvideoplace.tv/ajax_actions.php'
 
 URL_STREAM_INFOMANIAK = 'https://livevideo.infomaniak.com/player_config/%s.json'
 # player_id
-
-
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
 
 
 @Route.register
@@ -128,12 +121,8 @@ def get_video_url(plugin,
     return final_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     if item_id == 'viavosges':
 
@@ -163,9 +152,9 @@ def get_live_url(plugin, item_id, video_id, **kwargs):
         item.info.update(get_selected_item_info())
         return item
     else:
-        if item_id == 'viamirabelle':
+        if item_id == 'viamoselle':
             live_html = urlquick.get(
-                URL_LIVE_VIAMIRABELLE % item_id,
+                URL_LIVE_VIAMOSELLE % item_id,
                 headers={'User-Agent': web_utils.get_random_ua()},
                 max_age=-1)
         else:

@@ -30,91 +30,117 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'npo-1': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO 1',
         'thumb': 'channels/nl/npo1.png',
         'fanart': 'channels/nl/npo1_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 1
     },
     'npo-2': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO 2',
         'thumb': 'channels/nl/npo2.png',
         'fanart': 'channels/nl/npo2_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 2
     },
     'npo-zapp': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO Zapp',
         'thumb': 'channels/nl/npozapp.png',
         'fanart': 'channels/nl/npozapp_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 3
     },
     'npo-1-extra': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO 1 Extra',
         'thumb': 'channels/nl/npo1extra.png',
         'fanart': 'channels/nl/npo1extra_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 4
     },
     'npo-2-extra': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO 2 Extra',
         'thumb': 'channels/nl/npo2extra.png',
         'fanart': 'channels/nl/npo2extra_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 5
     },
     'npo-zappelin-extra': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO Zappelin Extra',
         'thumb': 'channels/nl/npozappelinextra.png',
         'fanart': 'channels/nl/npozappelinextra_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 6
     },
     'npo-nieuws': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO Nieuws',
         'thumb': 'channels/nl/nponieuws.png',
         'fanart': 'channels/nl/nponieuws_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 7
     },
     'npo-politiek': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/npo:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'NPO Politiek',
         'thumb': 'channels/nl/npopolitiek.png',
         'fanart': 'channels/nl/npopolitiek_fanart.jpg',
-        'module': 'resources.lib.channels.nl.npo',
         'enabled': True,
         'order': 8
     },
     'at5': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/nl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/nl/at5:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/nl_live.py
         'label': 'AT5',
         'thumb': 'channels/nl/at5.png',
         'fanart': 'channels/nl/at5_fanart.jpg',
-        'module': 'resources.lib.channels.nl.at5',
         'enabled': True,
         'order': 10
     }

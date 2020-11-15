@@ -39,18 +39,11 @@ import urlquick
 
 URL_ROOT = 'http://www.%s.bzh'
 
-URL_LIVE = URL_ROOT + '/player_live.php'
+URL_LIVE = URL_ROOT + '/le-direct'
 
 URL_REPLAY = URL_ROOT + '/le-replay'
 
 URL_STREAM = URL_ROOT + '/player.php?idprogramme=%s'
-
-
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
 
 
 @Route.register
@@ -137,15 +130,15 @@ def get_video_url(plugin,
     return final_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE % item_id, max_age=-1)
-    if 'http' in re.compile(r'source\: \"(.*?)\"').findall(resp.text)[0]:
-        return re.compile(r'source\: \"(.*?)\"').findall(resp.text)[0]
+    root = resp.parse()
+
+    live_datas_url = root.find('.//iframe').get('src')
+    resp2 = urlquick.get(live_datas_url, max_age=-1)
+    if 'http' in re.compile(r'OVSPlayer.URL \= \'(.*?)\'').findall(resp2.text)[0]:
+        return re.compile(r'OVSPlayer.URL \= \'(.*?)\'').findall(resp2.text)[0]
     else:
-        return 'https:' + re.compile(r'source\: \"(.*?)\"').findall(resp.text)[0]
+        return 'https:' + re.compile(r'OVSPlayer.URL \= \'(.*?)\'').findall(resp2.text)[0]

@@ -48,17 +48,18 @@ URL_REPLAY_BY_TV = URL_ROOT + '/%s'
 
 URL_BRIGHTCOVE_POLICY_KEY = 'http://players.brightcove.net/%s/%s_default/index.min.js'
 # AccountId, PlayerId
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/jp/tver.py
 
 URL_BRIGHTCOVE_VIDEO_JSON = 'https://edge.api.brightcove.com/'\
                             'playback/v1/accounts/%s/videos/%s'
 # AccountId, VideoId
 
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/jp/tver.py
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
+URL_BRIGHTCOVE_VIDEO_JSON = 'https://edge.api.brightcove.com/'\
+                            'playback/v1/accounts/%s/videos/%s'
+# AccountId, VideoId
 
 
 @Route.register

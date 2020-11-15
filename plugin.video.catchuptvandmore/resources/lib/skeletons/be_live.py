@@ -30,258 +30,347 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'rtl_tvi': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'RTL-TVI',
         'thumb': 'channels/be/rtltvi.png',
         'fanart': 'channels/be/rtltvi_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'xmltv_id': 'C168.api.telerama.fr',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 2
     },
     'plug_rtl': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'PLUG RTL',
         'thumb': 'channels/be/plugrtl.png',
         'fanart': 'channels/be/plugrtl_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'xmltv_id': 'C377.api.telerama.fr',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 3
     },
     'club_rtl': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'CLUB RTL',
         'thumb': 'channels/be/clubrtl.png',
         'fanart': 'channels/be/clubrtl_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'xmltv_id': 'C50.api.telerama.fr',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 4
     },
     'telemb': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/telemb:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Télé MB',
         'thumb': 'channels/be/telemb.png',
         'fanart': 'channels/be/telemb_fanart.jpg',
-        'module': 'resources.lib.channels.be.telemb',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 6
     },
     'rtc': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtc:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'RTC Télé Liège',
         'thumb': 'channels/be/rtc.png',
         'fanart': 'channels/be/rtc_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtc',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 7
     },
     'auvio': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'multi_live_bridge',
+=======
+        'route': '/resources/lib/channels/be/rtbf:list_lives',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'RTBF Auvio',
         'thumb': 'channels/be/auvio.png',
         'fanart': 'channels/be/auvio_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtbf',
         'enabled': True,
         'order': 8
     },
     'tvlux': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/tvlux:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'TV Lux',
         'thumb': 'channels/be/tvlux.png',
         'fanart': 'channels/be/tvlux_fanart.jpg',
-        'module': 'resources.lib.channels.be.tvlux',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 9
     },
     'rtl_info': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'RTL INFO',
         'thumb': 'channels/be/rtlinfo.png',
         'fanart': 'channels/be/rtlinfo_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 10
     },
     'bel_rtl': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'BEL RTL',
         'thumb': 'channels/be/belrtl.png',
         'fanart': 'channels/be/belrtl_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 11
     },
     'contact': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Contact',
         'thumb': 'channels/be/contact.png',
         'fanart': 'channels/be/contact_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'm3u_group': 'Belgique fr Radio',
         'enabled': True,
         'order': 12
     },
     'bx1': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/bx1:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'BX1',
         'thumb': 'channels/be/bx1.png',
         'fanart': 'channels/be/bx1_fanart.jpg',
-        'module': 'resources.lib.channels.be.bx1',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 13
     },
     'een': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/vrt:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Één',
         'thumb': 'channels/be/een.png',
         'fanart': 'channels/be/een_fanart.jpg',
-        'module': 'resources.lib.channels.be.vrt',
         'xmltv_id': 'C23.api.telerama.fr',
         'm3u_group': 'België nl',
         'enabled': True,
         'order': 14
     },
     'canvas': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/vrt:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Canvas',
         'thumb': 'channels/be/canvas.png',
         'fanart': 'channels/be/canvas_fanart.jpg',
-        'module': 'resources.lib.channels.be.vrt',
         'm3u_group': 'België nl',
         'enabled': True,
         'order': 15
     },
     'ketnet': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/vrt:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Ketnet',
         'thumb': 'channels/be/ketnet.png',
         'fanart': 'channels/be/ketnet_fanart.jpg',
-        'module': 'resources.lib.channels.be.vrt',
         'xmltv_id': 'C1280.api.telerama.fr',
         'm3u_group': 'België nl',
         'enabled': True,
         'order': 16
     },
     'nrjhitstvbe': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/nrjhitstvbe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'NRJ Hits TV',
         'thumb': 'channels/be/nrjhitstvbe.png',
         'fanart': 'channels/be/nrjhitstvbe_fanart.jpg',
-        'module': 'resources.lib.channels.be.nrjhitstvbe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 17
     },
     'rtl_sport': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/rtlplaybe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'RTL Sport',
         'thumb': 'channels/be/rtlsport.png',
         'fanart': 'channels/be/rtlsport_fanart.jpg',
-        'module': 'resources.lib.channels.be.rtlplaybe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 18
     },
     'tvcom': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/tvcom:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'TV Com',
         'thumb': 'channels/be/tvcom.png',
         'fanart': 'channels/be/tvcom_fanart.jpg',
-        'module': 'resources.lib.channels.be.tvcom',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 19
     },
     'canalc': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/canalc:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'Canal C',
         'thumb': 'channels/be/canalc.png',
         'fanart': 'channels/be/canalc_fanart.jpg',
-        'module': 'resources.lib.channels.be.canalc',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 20
     },
     'abxplore': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/abbe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'ABXPLORE',
         'thumb': 'channels/be/abxplore.png',
         'fanart': 'channels/be/abxplore_fanart.jpg',
-        'module': 'resources.lib.channels.be.abbe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 21
     },
     'ab3': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/be/abbe:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'label': 'AB3',
         'thumb': 'channels/be/ab3.png',
         'fanart': 'channels/be/ab3_fanart.jpg',
-        'module': 'resources.lib.channels.be.abbe',
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 22
     },
     'ln24': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
         'label': 'LN24',
         'thumb': 'channels/be/ln24.png',
         'fanart': 'channels/be/ln24_fanart.jpg',
         'module': 'resources.lib.channels.be.ln24',
+=======
+        'resolver': '/resources/lib/channels/be/ln24:get_live_url',
+        'label': 'LN24',
+        'thumb': 'channels/be/ln24.png',
+        'fanart': 'channels/be/ln24_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'm3u_group': 'Belgique fr',
         'enabled': True,
         'order': 23
     },
     'laune': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
         'label': 'La Une',
         'thumb': 'channels/be/laune.png',
         'fanart': 'channels/be/laune_fanart.jpg',
         'module': 'resources.lib.channels.be.rtbf',
+=======
+        'resolver': '/resources/lib/channels/be/rtbf:set_live_url',
+        'label': 'La Une',
+        'thumb': 'channels/be/laune.png',
+        'fanart': 'channels/be/laune_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'xmltv_id': 'C164.api.telerama.fr',
         'enabled': True,
         'order': 24
     },
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
     'ladeux': {
         'callback': 'live_bridge',
         'label': 'La Deux',
         'thumb': 'channels/be/ladeux.png',
         'fanart': 'channels/be/ladeux_fanart.jpg',
         'module': 'resources.lib.channels.be.rtbf',
+=======
+    'tipiktv': {
+        'resolver': '/resources/lib/channels/be/rtbf:set_live_url',
+        'label': 'Tipik',
+        'thumb': 'channels/be/tipik.png',
+        'fanart': 'channels/be/tipik_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'xmltv_id': 'C187.api.telerama.fr',
         'enabled': True,
         'order': 25
     },
     'latrois': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
         'label': 'La Trois',
         'thumb': 'channels/be/latrois.png',
         'fanart': 'channels/be/latrois_fanart.jpg',
         'module': 'resources.lib.channels.be.rtbf',
+=======
+        'resolver': '/resources/lib/channels/be/rtbf:set_live_url',
+        'label': 'La Trois',
+        'thumb': 'channels/be/latrois.png',
+        'fanart': 'channels/be/latrois_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
         'xmltv_id': 'C892.api.telerama.fr',
         'enabled': True,
         'order': 26
     },
     'actv': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/be_live.py
         'callback': 'live_bridge',
         'label': 'Antenne Centre TV',
         'thumb': 'channels/be/actv.png',
@@ -289,5 +378,21 @@ menu = {
         'module': 'resources.lib.channels.be.actv',
         'enabled': True,
         'order': 27
+=======
+        'resolver': '/resources/lib/channels/be/actv:get_live_url',
+        'label': 'Antenne Centre TV',
+        'thumb': 'channels/be/actv.png',
+        'fanart': 'channels/be/actv_fanart.jpg',
+        'enabled': True,
+        'order': 27
+    },
+    'telesambre': {
+        'resolver': '/resources/lib/channels/be/telesambre:get_live_url',
+        'label': 'Télésambre',
+        'thumb': 'channels/be/telesambre.png',
+        'fanart': 'channels/be/telesambre_fanart.jpg',
+        'enabled': True,
+        'order': 28
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/be_live.py
     }
 }

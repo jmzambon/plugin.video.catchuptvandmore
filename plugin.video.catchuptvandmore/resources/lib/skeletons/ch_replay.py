@@ -30,82 +30,105 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'rts': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/srgssr:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'RTS',
         'thumb': 'channels/ch/rts.png',
         'fanart': 'channels/ch/rts_fanart.jpg',
-        'module': 'resources.lib.channels.ch.srgssr',
         'enabled': True,
         'order': 1
     },
     'rsi': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/srgssr:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'RSI',
         'thumb': 'channels/ch/rsi.png',
         'fanart': 'channels/ch/rsi_fanart.jpg',
-        'module': 'resources.lib.channels.ch.srgssr',
         'enabled': True,
         'order': 2
     },
     'srf': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/srgssr:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'SRF',
         'thumb': 'channels/ch/srf.png',
         'fanart': 'channels/ch/srf_fanart.jpg',
-        'module': 'resources.lib.channels.ch.srgssr',
         'enabled': True,
         'order': 3
     },
     'rtr': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/srgssr:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'RTR',
         'thumb': 'channels/ch/rtr.png',
         'fanart': 'channels/ch/rtr_fanart.jpg',
-        'module': 'resources.lib.channels.ch.srgssr',
         'enabled': True,
         'order': 4
     },
     'swissinfo': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/srgssr:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'SWISSINFO',
         'thumb': 'channels/ch/swissinfo.png',
         'fanart': 'channels/ch/swissinfo_fanart.jpg',
-        'module': 'resources.lib.channels.ch.srgssr',
         'enabled': True,
         'order': 5
     },
     'tvm3': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/tvm3:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'TVM3',
         'thumb': 'channels/ch/tvm3.png',
         'fanart': 'channels/ch/tvm3_fanart.jpg',
-        'module': 'resources.lib.channels.ch.tvm3',
         'enabled': True,
         'order': 7
     },
     'becurioustv': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/becurioustv:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'BeCurious TV',
         'thumb': 'channels/ch/becurioustv.png',
         'fanart': 'channels/ch/becurioustv_fanart.jpg',
-        'module': 'resources.lib.channels.ch.becurioustv',
-        'enabled': True,
+        'enabled': False,
         'order': 8
     },
     'lemanbleu': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/ch_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/ch/lemanbleu:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ch_replay.py
         'label': 'Léman Bleu',
         'thumb': 'channels/ch/lemanbleu.png',
         'fanart': 'channels/ch/lemanbleu_fanart.jpg',
-        'module': 'resources.lib.channels.ch.lemanbleu',
         'enabled': True,
         'order': 22
     }

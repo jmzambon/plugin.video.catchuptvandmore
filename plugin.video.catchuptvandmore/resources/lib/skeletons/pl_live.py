@@ -30,23 +30,24 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'tvp3': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/pl_live.py
         'callback':
         'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/pl/tvp:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/pl_live.py
         'label': 'TVP 3 (' + utils.ensure_unicode(Script.setting['tvp3.language']) + ')',
         'thumb':
         'channels/pl/tvp3.png',
         'fanart':
         'channels/pl/tvp3_fanart.jpg',
-        'module':
-        'resources.lib.channels.pl.tvp',
         'available_languages': [
             "Białystok", "Bydgoszcz", "Gdańsk", "Gorzów Wielkopolski",
             "Katowice", "Kielce", "Kraków", "Lublin", "Łódź", "Olsztyn",
@@ -56,29 +57,38 @@ menu = {
         'order': 2
     },
     'tvpinfo': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/pl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/pl/tvp:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/pl_live.py
         'label': 'TVP Info',
         'thumb': 'channels/pl/tvpinfo.png',
         'fanart': 'channels/pl/tvpinfo_fanart.jpg',
-        'module': 'resources.lib.channels.pl.tvp',
         'enabled': True,
         'order': 3
     },
     'tvppolonia': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/pl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/pl/tvp:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/pl_live.py
         'label': 'TVP Polonia',
         'thumb': 'channels/pl/tvppolonia.png',
         'fanart': 'channels/pl/tvppolonia_fanart.jpg',
-        'module': 'resources.lib.channels.pl.tvp',
         'enabled': True,
         'order': 4
     },
     'tvppolandin': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/pl_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/pl/tvp:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/pl_live.py
         'label': 'TVP Poland IN',
         'thumb': 'channels/pl/tvppolandin.png',
         'fanart': 'channels/pl/tvppolandin_fanart.jpg',
-        'module': 'resources.lib.channels.pl.tvp',
         'enabled': True,
         'order': 5
     }

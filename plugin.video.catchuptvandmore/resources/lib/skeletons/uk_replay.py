@@ -30,67 +30,90 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'blaze': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/uk/blaze:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'label': 'Blaze',
         'thumb': 'channels/uk/blaze.png',
         'fanart': 'channels/uk/blaze_fanart.jpg',
-        'module': 'resources.lib.channels.uk.blaze',
         'enabled': True,
         'order': 1
     },
     'skynews': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/uk/sky:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'label': 'Sky News',
         'thumb': 'channels/uk/skynews.png',
         'fanart': 'channels/uk/skynews_fanart.jpg',
-        'module': 'resources.lib.channels.uk.sky',
         'enabled': True,
         'order': 6
     },
     'skysports': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/uk/sky:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'label': 'Sky Sports',
         'thumb': 'channels/uk/skysports.png',
         'fanart': 'channels/uk/skysports_fanart.jpg',
-        'module': 'resources.lib.channels.uk.sky',
         'enabled': True,
         'order': 7
     },
     'stv': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/uk/stv:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'label': 'STV',
         'thumb': 'channels/uk/stv.png',
         'fanart': 'channels/uk/stv_fanart.jpg',
-        'module': 'resources.lib.channels.uk.stv',
         'enabled': True,
         'order': 8
     },
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
     'questod': {
         'callback': 'replay_bridge',
         'label': 'Quest OD',
         'thumb': 'channels/uk/questod.png',
         'fanart': 'channels/uk/questod_fanart.jpg',
         'module': 'resources.lib.channels.uk.questod',
+=======
+    'dplay': {
+        'route': '/resources/lib/channels/uk/dplay:dplay_root',
+        'label': '*Dplay',
+        'thumb': 'channels/uk/dplay.png',
+        'fanart': 'channels/uk/dplay_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'enabled': True,
         'order': 9
     },
     'uktvplay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/uk/uktvplay:list_categories',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'label': 'UKTV Play',
         'thumb': 'channels/uk/uktvplay.png',
         'fanart': 'channels/uk/uktvplay_fanart.jpg',
-        'module': 'resources.lib.channels.uk.uktvplay',
         'enabled': True,
         'order': 17
     },
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/uk_replay.py
     'fiveusa': {
         'callback': 'replay_bridge',
         'label': '5USA',
@@ -106,6 +129,21 @@ menu = {
         'thumb': 'channels/uk/bristoltv.png',
         'fanart': 'channels/uk/bristoltv_fanart.jpg',
         'module': 'resources.lib.channels.uk.bristoltv',
+=======
+    'my5': {
+        'route': '/resources/lib/channels/uk/my5:channels',
+        'label': 'My 5',
+        'thumb': 'channels/uk/my5.png',
+        'fanart': 'channels/uk/my5_fanart.jpg',
+        'enabled': False,
+        'order': 20
+    },
+    'uklocaltv': {
+        'route': '/resources/lib/channels/uk/uklocaltv:channels',
+        'label': 'UK Local TV',
+        'thumb': 'channels/uk/uklocaltv.png',
+        'fanart': 'channels/uk/uklocaltv_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/uk_replay.py
         'enabled': True,
         'order': 21
     }

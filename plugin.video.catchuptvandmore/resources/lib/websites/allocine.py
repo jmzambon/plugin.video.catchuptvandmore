@@ -23,16 +23,20 @@ from __future__ import unicode_literals
 
 import json
 import re
-import requests
 
-from codequick import Route, Resolver, Listitem, Script, utils
+from codequick import Route, Resolver, Listitem
 import urlquick
-from kodi_six import xbmcgui
 
 from resources.lib import resolver_proxy
-from resources.lib import download
 
+from resources.lib import download
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/websites/allocine.py
+
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/websites/allocine.py
 from resources.lib.menu_utils import item_post_treatment
+
+import base64
 
 # TO DO
 # Get Last_Page (for Programs, Videos) / Fix Last_page
@@ -47,15 +51,8 @@ URL_API_MEDIA = 'http://api.allocine.fr/rest/v3/' \
 # videoId, PARTENER
 PARTNER = 'YW5kcm9pZC12Mg'
 
-URL_SEARCH_VIDEOS = URL_ROOT + '/recherche/18/?p=%s&q=%s'
+URL_SEARCH_VIDEOS = URL_ROOT + '/recherche/%s?q=%s'
 # Page, Query
-
-
-def website_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after website_bridge
-    """
-    return root(plugin, item_id)
 
 
 CATEGORIES = {
@@ -69,8 +66,16 @@ CATEGORIES = {
 
 CATEGORIES_LANGUAGE = {'VF': 'version-0/', 'VO': 'version-1/'}
 
+SPLIT_CODE = "ACr"
 
-def root(plugin, item_id, **kwargs):
+
+def unobfuscated(obfuscated):
+    b64_url = obfuscated.split()[0]
+    return base64.standard_b64decode(''.join(b64_url.split(SPLIT_CODE)))
+
+
+@Route.register
+def website_root(plugin, item_id, **kwargs):
     """Add modes in the listing"""
     for category_name, category_url in list(CATEGORIES.items()):
 
@@ -100,7 +105,7 @@ def root(plugin, item_id, **kwargs):
             yield item
 
     # Search videos
-    item = Listitem.search(list_videos_search, item_id=item_id, page=1)
+    item = Listitem.search(list_search_categories, item_id=item_id)
     item_post_treatment(item)
     yield item
 
@@ -318,8 +323,7 @@ def list_videos_films_series_1(plugin, item_id, page, show_url, **kwargs):
         item = Listitem()
         item.label = episode.find('.//img').get('alt')
         try:
-            video_id = re.compile('cmedia=(.*?)&').findall(
-                episode.find(".//a[@class='meta-title-link']").get('href'))[0]
+            video_url = URL_ROOT + episode.find(".//a[@class='meta-title-link']").get('href')
         except IndexError:
             continue
         if episode.find('.//img').get('data-src') is not None:
@@ -329,7 +333,7 @@ def list_videos_films_series_1(plugin, item_id, page, show_url, **kwargs):
 
         item.set_callback(get_video_url,
                           item_id=item_id,
-                          video_id=video_id)
+                          video_url=video_url)
         item_post_treatment(item, is_playable=True, is_downloadable=True)
         yield item
 
@@ -353,6 +357,7 @@ def list_videos_emissions_1(plugin, item_id, show_url,
             item.art['thumb'] = item.art['landscape'] = image_json_parser['src']
         elif episode.find('.//img').get('data-src') is not None:
             item.art['thumb'] = item.art['landscape'] = episode.find('.//img').get('data-src')
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/websites/allocine.py
         else:
             item.art['thumb'] = item.art['landscape'] = episode.find('.//img').get('src')
 
@@ -362,13 +367,19 @@ def list_videos_emissions_1(plugin, item_id, show_url,
                 'cserie=' in episode.find('.//a').get('href'):
             video_id = episode.find('.//a').get(
                 'href').split('_cmedia=')[1].split('&')[0]
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/websites/allocine.py
         else:
-            video_id = episode.find('.//a').get('href').split('-')[1].replace(
-                '/', '')
+            item.art['thumb'] = item.art['landscape'] = episode.find('.//img').get('src')
+
+        try:
+            video_url = URL_ROOT + episode.find(".//a[@class='meta-title-link']").get('href')
+        except IndexError:
+            continue
 
         item.set_callback(get_video_url,
                           item_id=item_id,
-                          video_id=video_id)
+                          video_url=video_url)
         item_post_treatment(item, is_playable=True, is_downloadable=True)
         yield item
 
@@ -389,33 +400,31 @@ def list_videos_emissions_2(plugin, item_id, page, show_url, last_page,
     for episode in episodes:
         item = Listitem()
         if episode.find('.//h3') is not None:
-            item.label = episode.find('.//h3').find('.//span').find(
+            video_title = episode.find('.//h3').find('.//span').find(
                 './/a').find('.//strong').text.strip() + ' - ' + episode.find(
                     './/h3').find('.//span').find('.//a').find(
                         './/strong').tail.strip()
         else:
             if episode.find('.//h2/span/a/strong') is not None:
-                item.label = episode.find('.//h2/span/a/strong').text.strip() \
+                video_title = episode.find('.//h2/span/a/strong').text.strip() \
                     + ' - ' + episode.find('.//h2/span/a/strong').tail.strip()
             elif episode.find('.//h2/span/span') is not None:
-                item.label = episode.find('.//h2/span/span').text.strip()
+                video_title = episode.find('.//h2/span/span').text.strip()
             elif episode.find('.//h2/span/a') is not None:
-                item.label = episode.find('.//h2/span/a').text.strip()
+                video_title = episode.find('.//h2/span/a').text.strip()
             else:
-                item.label = ''
+                video_title = ''
+        item.label = video_title
 
-        if episode.find('.//a') is not None:
-            if '?cmedia=' in episode.find('.//a').get('href'):
-                video_id = episode.find('.//a').get('href').split('?cmedia=')[1]
-            elif 'cfilm=' in episode.find('.//a').get('href') or \
-                    'cserie=' in episode.find('.//a').get('href'):
-                video_id = episode.find('.//h2').find('.//span').find('.//a').get(
-                    'href').split('_cmedia=')[1].split('&')[0]
-            else:
-                video_id = episode.find('.//a').get('href').split('-')[1].replace(
-                    '/', '')
+        if episode.find(".//a") is not None:
+            video_urls_datas = episode.findall(".//a")
+            video_url = ''
+            for video_url_datas in video_urls_datas:
+                if 'program' not in video_url_datas.get('href'):
+                    video_url = URL_ROOT + video_url_datas.get('href')
         else:
-            # TODO: ↪ Root menu (1) ➡ Websites (3) ➡ Allociné (1) ➡ Les émissions (1) ➡ Stars (6) ➡ Clips musicaux (3) ➡ # Les videos (1) ➡ [B]Next page 2[/B]
+            # TODO: ↪ Root menu (1) ➡ Websites (3) ➡ Allociné (1) ➡ Les émissions (1) ➡
+            # Stars (6) ➡ Clips musicaux (3) ➡ # Les videos (1) ➡ [B]Next page 2[/B]
             continue
 
         for plot_value in episode.find(
@@ -434,7 +443,7 @@ def list_videos_emissions_2(plugin, item_id, page, show_url, last_page,
 
         item.set_callback(get_video_url,
                           item_id=item_id,
-                          video_id=video_id)
+                          video_url=video_url)
         item_post_treatment(item, is_playable=True, is_downloadable=True)
         yield item
 
@@ -446,13 +455,34 @@ def list_videos_emissions_2(plugin, item_id, page, show_url, last_page,
 
 
 @Route.register
-def list_videos_search(plugin, item_id, page, search_query, **kwargs):
-    resp = urlquick.get(URL_SEARCH_VIDEOS % (page, search_query))
-    root = resp.parse("table", attrs={"class": "totalwidth noborder purehtml"})
+def list_search_categories(plugin, item_id, search_query=None, full_url=None, **kwargs):
 
-    for episode in root.iterfind(".//tr"):
-        if episode.find('.//img') is not None:
+    if search_query is not None:
+        resp = urlquick.get(URL_SEARCH_VIDEOS % ("", search_query))
+    else:
+        resp = urlquick.get(full_url)
+
+    try:
+        root = resp.parse("nav", attrs={"class": "third-nav third-nav-tab js-third-nav "})
+    except RuntimeError:
+        try:
+            root = resp.parse("nav", attrs={"class": "third-nav third-nav-tab js-third-nav"})
+        except RuntimeError:
+            yield None
+            return
+
+    # only show categories that may contain videos
+    menu_items_1 = ('Stars', 'Sociétés')
+    menu_items_2 = ('Top', 'VOD', 'News', 'Vidéo', 'Films', 'Séries',
+                    'Production', 'Exportation', 'Chaîne', 'Effets')
+
+    if root.find(".//a[@title]") is not None:
+        for menu_item in root.iterfind(".//a[@title]"):
+            label = menu_item.get('title')
+            menu_url = URL_ROOT + menu_item.get('href')
+
             item = Listitem()
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/websites/allocine.py
             item.label = episode.find('.//img').get('alt')
             video_id = ''
             if '_cmedia=' in episode.find('.//a').get('href'):
@@ -471,29 +501,189 @@ def list_videos_search(plugin, item_id, page, search_query, **kwargs):
                               video_id=video_id)
             item_post_treatment(item, is_playable=True, is_downloadable=True)
             yield item
+=======
+            item.label = label.strip(' \n')
+            if item.label.startswith(menu_items_1):
+                item.set_callback(list_search_subcategories,
+                                  item_id=item_id,
+                                  category_url=menu_url,
+                                  page=1)
+                item_post_treatment(item)
+                yield item
+            elif item.label.startswith(menu_items_2):
+                item.set_callback(list_search_videos,
+                                  item_id=item_id,
+                                  search_url=menu_url,
+                                  page=1)
+                item_post_treatment(item)
+                yield item
+
+    else:
+        for menu_item in root.iterfind(".//span"):
+            if SPLIT_CODE in menu_item.get('class'):
+                if menu_item.find(".//span") is not None:
+                    label = menu_item.find(".//span").text
+                else:
+                    label = menu_item.text
+                if not label:
+                    continue
+                menu_url = URL_ROOT + unobfuscated(menu_item.get('class'))
+
+                item = Listitem()
+                item.label = label.strip(' \n')
+                if item.label.startswith(menu_items_1):
+                    item.set_callback(list_search_subcategories,
+                                      item_id=item_id,
+                                      category_url=menu_url,
+                                      page=1)
+                    item_post_treatment(item)
+                    yield item
+                elif item.label.startswith(menu_items_2):
+                    item.set_callback(list_search_videos,
+                                      item_id=item_id,
+                                      search_url=menu_url,
+                                      page=1)
+                    item_post_treatment(item)
+                    yield item
+
+
+@Route.register
+def list_search_subcategories(plugin, item_id, category_url, page, **kwargs):
+
+    if '?q' in category_url:
+        resp = urlquick.get(category_url + "&page=%s" % page)
+    else:
+        resp = urlquick.get(category_url + "?page=%s" % page)
+    root = resp.parse()
+
+    card_classes = ('card person-card entity-card-list entity-card mdl-fixed',
+                    'card entity-card company-card',
+                    'card entity-card company-card ')
+    video_data_list = None
+    for card_class in card_classes:
+        if root.find(".//div[@class='%s']" % card_class) is not None:
+            video_data_list = root.iterfind(".//div[@class='%s']" % card_class)
+            break
+    if not video_data_list:
+        yield None
+        return
+
+    for category in video_data_list:
+        if category.find('.//img') is not None:
+            item = Listitem()
+            item.label = category.find('.//img').get('alt')
+            item.art['thumb'] = item.art['landscape'] = category.find('.//img').get('data-src')
+
+            try:
+                video_url = URL_ROOT + category.find(
+                    './/*[@class="meta-title"]/a').get('href')
+                item.set_callback(get_video_url,
+                                  item_id=item_id,
+                                  video_url=video_url)
+                item_post_treatment(item, is_playable=True, is_downloadable=True)
+                yield item
+            except AttributeError:
+                subcategory_url = URL_ROOT + unobfuscated(category.find(
+                    './/*[@class="meta-title"]/span').get('class'))
+                item.set_callback(list_search_categories,
+                                  item_id=item_id,
+                                  full_url=subcategory_url)
+                item_post_treatment(item)
+                yield item
+
+    # More subcategories...
+    try:
+        root2 = resp.parse("nav", attrs={"class": "pagination cf"})
+        if 'button-disabled' not in root2.find('span[2]').get('class'):
+            yield Listitem.next_page(item_id=item_id,
+                                     category_url=category_url,
+                                     page=page + 1)
+    except (RuntimeError, AttributeError):
+        pass
+
+
+@Route.register
+def list_search_videos(plugin, item_id, search_url, page, **kwargs):
+
+    if '?q' in search_url:
+        resp = urlquick.get(search_url + "&page=%s" % page)
+    else:
+        resp = urlquick.get(search_url + "?page=%s" % page)
+    root = resp.parse()
+
+    card_classes = ('card entity-card entity-card-list cf',
+                    'card entity-card entity-card-list entity-card-person cf',
+                    'card video-card video-card-col mdl-fixed',
+                    'card news-card news-card-row cf',
+                    'card news-card news-card-col mdl cf')
+    video_data_list = None
+    for card_class in card_classes:
+        if root.find(".//div[@class='%s']" % card_class) is not None:
+            video_data_list = root.iterfind(".//div[@class='%s']" % card_class)
+            break
+    if not video_data_list:
+        yield None
+        return
+
+    for video_data in video_data_list:
+        item = Listitem()
+
+        image_src = video_data.find('.//img').get('data-src')
+        if not image_src:
+            image_src = video_data.find('.//img').get('src')
+
+        try:
+            video_url = URL_ROOT + unobfuscated(video_data.find(
+                './/*[@class="meta-title"]/span').get('class'))
+        except AttributeError:
+            video_url = URL_ROOT + video_data.find(
+                './/*[@class="meta-title"]/a').get('href')
+
+        # if not '/empty/' in image_src:
+        item.label = video_data.find('.//img').get('alt')
+        item.art['thumb'] = item.art['landscape'] = image_src
+
+        try:
+            item.info['duration'] = video_data.find('.//*[@class="thumbnail-count"]').text
+        except AttributeError:
+            pass
+
+        item.set_callback(get_video_url,
+                          item_id=item_id,
+                          video_url=video_url)
+        item_post_treatment(item, is_playable=True, is_downloadable=True)
+        yield item
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/websites/allocine.py
 
     # More videos...
-    yield Listitem.next_page(item_id=item_id,
-                             page=page + 1,
-                             search_query=search_query)
+    try:
+        root2 = resp.parse("nav", attrs={"class": "pagination cf"})
+        if 'button-disabled' not in root2.find('span[2]').get('class'):
+            yield Listitem.next_page(item_id=item_id,
+                                     search_url=search_url,
+                                     page=page + 1)
+    except (RuntimeError, AttributeError):
+        pass
 
 
 @Resolver.register
 def get_video_url(plugin,
                   item_id,
-                  video_id,
+                  video_url,
                   download_mode=False,
+                  loop=1,
                   **kwargs):
+
     """Get video URL and start video player"""
+    resp = urlquick.get(video_url, max_age=-1)
+    root = resp.parse()
 
-    video_json = urlquick.get(URL_API_MEDIA % (video_id, PARTNER)).text
-    video_json_parser = json.loads(video_json)
-    # print(repr(video_json_parser))
-    desired_quality = Script.setting.get_string('quality')
+    if root.find(".//figure[@class='player player-auto-play js-player']") is not None:
+        stream_datas_json = root.find(
+            ".//figure[@class='player player-auto-play js-player']").get('data-model')
+        json_parser = json.loads(stream_datas_json)
 
-    if 'media' not in video_json_parser:
-        return False
-
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/websites/allocine.py
     final_url = ''
     if 'rendition' in video_json_parser["media"]:
         # (Video Hosted By Allocine)
@@ -519,26 +709,41 @@ def get_video_url(plugin,
             label = plugin.localize(30710)
             Script.notify(label, label)
             return False
+=======
+        final_url = ''
+        if 'high' in json_parser["videos"][0]["sources"]:
+            final_url = 'https:' + json_parser["videos"][0]["sources"]["high"]
+        elif 'medium' in json_parser["videos"][0]["sources"]:
+            final_url = 'https:' + json_parser["videos"][0]["sources"]["medium"]
+        else:
+            final_url = json_parser["videos"][0]["sources"]["standard"]
+
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/websites/allocine.py
         if download_mode:
             return download.download_video(final_url)
-
         return final_url
-    else:
-        # (Video Not Hosted By Allocine)
-        url_video_embeded = re.compile('src=\'(.*?)\'').findall(
-            video_json_parser["media"]["trailerEmbed"])[0]
-        if 'allocine' in url_video_embeded:
-            url_video_embeded_html = urlquick.get(url_video_embeded).text
-            url_video_resolver = re.compile('data-model="(.*?)"').findall(
-                url_video_embeded_html)[0]
-            url_video_resolver = url_video_resolver.replace('&quot;', '"')
-            url_video_resolver = url_video_resolver.replace('\\', '')
-            url_video_resolver = url_video_resolver.replace('&amp;', '&')
-            url_video_resolver = url_video_resolver.replace('%2F', '/')
-            # Case Youtube
+    elif root.find(".//div[@class='card entity-card entity-card-overview entity-card-list cf']") is not None:
+        if loop == 1:   # prevent infinite recursion
+            resp2 = urlquick.get(video_url)
+            root2 = resp2.parse("div", attrs={"class": "card entity-card entity-card-overview entity-card-list cf"})
+            video_url2 = URL_ROOT + unobfuscated(root2.find('.//figure/span').get('class'))
+            return get_video_url(plugin, item_id, video_url2, loop=2)
+    elif root.find(".//div[@class='card entity-card entity-card-overview entity-card-list cf ']") is not None:
+        if loop == 1:   # prevent infinite recursion
+            resp2 = urlquick.get(video_url)
+            root2 = resp2.parse("div", attrs={"class": "card entity-card entity-card-overview entity-card-list cf "})
+            video_url2 = URL_ROOT + unobfuscated(root2.find('.//figure/span').get('class'))
+            return get_video_url(plugin, item_id, video_url2, loop=2)
+    elif root.find(".//div[@class='more-overlay-item social-export light']") is not None:
+        stream_datas_json = root.find(
+            ".//div[@class='more-overlay-item social-export light']").get('data-model')
+        print(repr(stream_datas_json))
+        json_parser = json.loads(stream_datas_json)
+        if 'code' in json_parser["videos"][0]["sources"]:
+            url_video_resolver = json_parser["videos"][0]["sources"]["code"]
             if 'youtube' in url_video_resolver:
-                video_id = re.compile(r'www.youtube.com/embed/(.*?)[\?\"\&]'
-                                      ).findall(url_video_resolver)[0]
+                video_id = re.compile(
+                    r'www.youtube.com/embed/(.*?)[\?\"\&]').findall(url_video_resolver)[0]
                 return resolver_proxy.get_stream_youtube(
                     plugin, video_id, download_mode)
 
@@ -551,39 +756,27 @@ def get_video_url(plugin,
 
             # Case Facebook
             elif 'facebook' in url_video_resolver:
-                video_id = re.compile('www.facebook.com/allocine/videos/(.*?)/'
-                                      ).findall(url_video_resolver)[0]
+                video_id = re.compile(
+                    r'www.facebook.com/allocine/videos/(.*?)/').findall(url_video_resolver)[0]
                 return resolver_proxy.get_stream_facebook(
                     plugin, video_id, download_mode)
 
             # Case Vimeo
             elif 'vimeo' in url_video_resolver:
-                video_id = re.compile('player.vimeo.com/video/(.*?)[\?\"]'
-                                      ).findall(url_video_resolver)[0]
-                return resolver_proxy.get_stream_vimeo(plugin, video_id,
-                                                       download_mode)
-
-            # TO DO ? (return an error)
-            else:
-                return False
-        else:
-            # Case Youtube
-            if 'youtube' in url_video_embeded:
-                video_id = re.compile('www.youtube.com/embed/(.*?)[\?\"\&]'
-                                      ).findall(url_video_embeded)[0]
-                return resolver_proxy.get_stream_youtube(
+                video_id = re.compile(
+                    r'player.vimeo.com/video/(.*?)[\?\"]').findall(url_video_resolver)[0]
+                return resolver_proxy.get_stream_vimeo(
                     plugin, video_id, download_mode)
 
-            # TO DO ? (return an error)
-            else:
-                return False
+    plugin.notify(plugin.localize(30718), '')
+    return False
 
 
 @Route.register
 def list_videos_news_videos(plugin, item_id, category_url, page, **kwargs):
 
     resp = urlquick.get(category_url + '?page=%s' % page)
-    root = resp.parse("div", attrs={"class": "col-left"})
+    root = resp.parse("div", attrs={"class": "gd-col-left"})
 
     for episode in root.iterfind(".//div"):
         if episode.get('class') is not None:

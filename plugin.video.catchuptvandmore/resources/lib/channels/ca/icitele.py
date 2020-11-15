@@ -71,6 +71,7 @@ LIVE_ICI_TELE_REGIONS = {
     "Ottawa": "cboft",
     "Montréal": "cbft"
 }
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele.py
 
 
 def replay_entry(plugin, item_id, **kwargs):
@@ -78,6 +79,8 @@ def replay_entry(plugin, item_id, **kwargs):
     First executed function after replay_bridge
     """
     return list_programs(plugin, item_id)
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/icitele.py
 
 
 @Route.register
@@ -87,23 +90,36 @@ def list_programs(plugin, item_id, **kwargs):
     json_value = re.compile(r'/\*bns\*/ (.*?) /\*bne\*/').findall(resp.text)[0]
     json_parser = json.loads(json_value)
 
+    # Regional programms
+    for programs_datas in json_parser["pagesV2"]["pages"]["/tele/emissions"][
+            "data"]["programmesForRegion"]:
+
+        if '/tele/' in programs_datas["url"]:
+            program_title = programs_datas["title"]
+            program_image = programs_datas["picture"]["url"]
+            program_url = programs_datas["url"] + '/site/episodes'
+
+            item = Listitem()
+            item.label = program_title
+            item.art['thumb'] = item.art['landscape'] = program_image
+            item.set_callback(list_videos,
+                              item_id=item_id,
+                              program_url=program_url,
+                              page='1')
+            item_post_treatment(item)
+            yield item
     # All programs
-    for programs_datas in json_parser["pages"]["teleShowsList"]["pageModel"][
+    for programs_datas in json_parser["pagesV2"]["pages"]["/tele/emissions"][
             "data"]["programmes"]:
 
         if '/tele/' in programs_datas["url"]:
             program_title = programs_datas["title"]
-            program_url = ''
-            if 'telejournal-22h' in programs_datas["url"] or \
-                    'telejournal-18h' in programs_datas["url"]:
-                program_url = URL_ROOT + programs_datas[
-                    "url"] + '/2016-2017/episodes'
-            else:
-                program_url = URL_ROOT + programs_datas[
-                    "url"] + '/site/episodes'
+            program_image = programs_datas["picture"]["url"]
+            program_url = URL_ROOT + programs_datas["url"] + '/site/episodes'
 
             item = Listitem()
             item.label = program_title
+            item.art['thumb'] = item.art['landscape'] = program_image
             item.set_callback(list_videos,
                               item_id=item_id,
                               program_url=program_url,
@@ -159,12 +175,12 @@ def get_video_url(plugin,
     return final_video_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele.py
 def get_live_url(plugin, item_id, video_id, **kwargs):
+=======
+def get_live_url(plugin, item_id, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/icitele.py
 
     resp2 = urlquick.get(
         URL_CLIENT_VALUE,

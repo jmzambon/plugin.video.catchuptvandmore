@@ -6,155 +6,276 @@
 ##	Télé-Québec
 ##	telequebec
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/telequebec.png" group-title="Canada",Télé-Québec
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=telequebec&item_module=resources.lib.channels.ca.telequebec&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/telequebec/get_live_url/?item_id=telequebec
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	TVA
 ##	tva
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/tva.png" group-title="Canada",TVA
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=tva&item_module=resources.lib.channels.ca.tva&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/tva/get_live_url/?item_id=tva
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Vancouver
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Vancouver
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Vancouver"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Vancouver
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Regina
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Regina
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Regina"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Regina
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Toronto
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Toronto
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Toronto"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Toronto
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Edmonton
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Edmonton
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Edmonton"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Edmonton
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Rimouski
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Rimouski
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Rimouski"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Rimouski
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Québec
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Québec
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Québec"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Qu%C3%A9bec
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Winnipeg
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Winnipeg
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Winnipeg"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Winnipeg
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Moncton
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Moncton
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Moncton"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Moncton
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Ottawa
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Ottawa
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Ottawa"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Ottawa
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	ICI Télé Montréal
 ##	icitele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/icitele.png" group-title="Canada",ICI Télé Montréal
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=icitele&item_module=resources.lib.channels.ca.icitele&item_dict={"language":"Montréal"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/icitele/get_live_url/?item_id=icitele&language=Montr%C3%A9al
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	NTV
 ##	ntvca
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/ntvca.png" group-title="Canada",NTV
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=ntvca&item_module=resources.lib.channels.ca.ntvca&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/ntvca/get_live_url/?item_id=ntvca
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	Télé-Mag
 ##	telemag
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/telemag.png" group-title="Canada",Télé-Mag
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=telemag&item_module=resources.lib.channels.ca.telemag&item_dict={}
 
 ##	V Télé
 ##	vtele
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/vtele.png" group-title="Canada",V Télé
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=vtele&item_module=resources.lib.channels.ca.noovo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/telemag/get_live_url/?item_id=telemag
+
+##	Noovo
+##	noovo
+#EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/noovo.png" group-title="Canada",Noovo
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/noovo/get_live_url/?item_id=noovo
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Ottawa
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Ottawa
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Ottawa"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Ottawa
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Montreal
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Montreal
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Montreal"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Montreal
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Charlottetown
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Charlottetown
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Charlottetown"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Charlottetown
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Fredericton
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Fredericton
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Fredericton"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Fredericton
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Halifax
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Halifax
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Halifax"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Halifax
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Windsor
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Windsor
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Windsor"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Windsor
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Yellowknife
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Yellowknife
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Yellowknife"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Yellowknife
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Winnipeg
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Winnipeg
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Winnipeg"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Winnipeg
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Regina
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Regina
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Regina"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Regina
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Calgary
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Calgary
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Calgary"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Calgary
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Edmonton
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Edmonton
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Edmonton"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Edmonton
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Vancouver
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Vancouver
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Vancouver"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Vancouver
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC Toronto
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC Toronto
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"Toronto"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=Toronto
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	CBC St. John's
 ##	cbc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/cbc.png" group-title="Canada",CBC St. John's
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=cbc&item_module=resources.lib.channels.ca.cbc&item_dict={"language":"St. John's"}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/cbc/get_live_url/?item_id=cbc&language=St.+John%27s
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	LCN
 ##	lcn
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/lcn.png" group-title="Canada",LCN
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=lcn&item_module=resources.lib.channels.ca.tva&item_dict={}
 
 ##	Yoopa
 ##	yoopa
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/ca/yoopa.png" group-title="Canada",Yoopa
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=yoopa&item_module=resources.lib.channels.ca.tva&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ca/tva/get_live_url/?item_id=lcn
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 

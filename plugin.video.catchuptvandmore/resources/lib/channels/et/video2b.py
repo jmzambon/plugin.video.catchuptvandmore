@@ -34,7 +34,11 @@ import urlquick
 
 
 @Resolver.register
+<<<<<<< HEAD
 def live_entry(plugin, item_id, **kwargs):
+=======
+def get_live_url(plugin, item_id, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
     html = urlquick.get('http://video2b.vixtream.net/tv/v/%s' % item_id).text.encode('utf-8')
     m3u8_url = re.compile(r'var src=\'(.*?)\';').findall(html)
     if m3u8_url:

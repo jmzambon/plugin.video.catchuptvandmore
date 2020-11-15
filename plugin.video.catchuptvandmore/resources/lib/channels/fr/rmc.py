@@ -38,6 +38,7 @@ import urlquick
 # Get informations of replay ?
 
 URL_ROOT = 'https://%s.bfmtv.com'
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/rmc.py
 
 URL_REPLAY = {
     'rmcstory': URL_ROOT + '/mediaplayer-replay/nouveautes/',
@@ -45,13 +46,15 @@ URL_REPLAY = {
 }
 
 URL_LIVE = URL_ROOT + '/mediaplayer-direct/'
+=======
 
+URL_REPLAY = {
+    'rmcstory': URL_ROOT + '/mediaplayer-replay/nouveautes/',
+    'rmcdecouverte': URL_ROOT + '/mediaplayer-replay/'
+}
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/rmcdecouverte.py
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
+URL_LIVE = URL_ROOT + '/mediaplayer-direct/'
 
 
 @Route.register
@@ -136,12 +139,8 @@ def get_video_url(plugin,
                                                     download_mode)
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE % item_id,
                         headers={'User-Agent': web_utils.get_random_ua()},

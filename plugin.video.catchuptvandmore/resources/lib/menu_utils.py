@@ -42,10 +42,14 @@ from resources.lib.vpn import add_vpn_context
 # delete_for_submission_end
 from resources.lib.kodi_utils import get_kodi_version
 import resources.lib.favourites as fav
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/menu_utils.py
 
 from resources.lib.addon_utils import get_item_label
 from resources.lib.migration_utils import migrate_old_menus_settings
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/menu_utils.py
 
+from resources.lib.addon_utils import get_item_label
 
 MENUS_SETTINGS_FP = os.path.join(Script.get_info('profile'), "menus_settings.json")
 """
@@ -66,10 +70,6 @@ def get_menus_settings():
     Returns:
         dict: Menus settings
     """
-    try:
-        migrate_old_menus_settings(MENUS_SETTINGS_FP)  # Migrate old Kodi settings (from settings.xml)
-    except Exception:
-        Script.log('Failed to migrate old settings to json file')
     if not xbmcvfs.exists(MENUS_SETTINGS_FP):
         return {}
     with open(MENUS_SETTINGS_FP) as f:

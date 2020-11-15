@@ -47,13 +47,6 @@ URL_REPLAY_STREAM = URL_ROOT + '/video/itemfeed?id=%s'
 # videoId
 
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_programs(plugin, item_id)
-
-
 @Route.register
 def list_programs(plugin, item_id, **kwargs):
     """
@@ -86,6 +79,7 @@ def list_videos(plugin, item_id, program_url, **kwargs):
 
     resp = urlquick.get(program_url)
     root = resp.parse()
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/us/abcnews.py
     list_videos_datas = {}
     if root.find(
             ".//article[@class='carousel-item row-item fe-top']") is not None:
@@ -110,6 +104,41 @@ def list_videos(plugin, item_id, program_url, **kwargs):
                           video_id=video_id)
         item_post_treatment(item, is_playable=True, is_downloadable=True)
         yield item
+=======
+    for script_data in root.iterfind(".//script[@type='text/javascript']"):
+        if script_data.text and "__abcnews__" in script_data.text:
+            script = script_data.text
+            page_data = script[script.find('{'):script.rfind('}') + 1]
+            json_parser = json.loads(page_data)
+            for element in json_parser['page']['content']['section']['bands']:
+                try:
+                    block = element['blocks'][0]
+                    if block['componentKey'] == 'fullEpisodesBlock':
+                        list_videos_datas = block['items']['latestVideos']
+                        for video_datas in list_videos_datas:
+                            video_title = video_datas['title']
+                            video_id = video_datas['id']
+                            video_image = video_datas['image']
+                            video_thumb = video_datas['videos']['thumbnail']
+                            video_duration = video_datas['videos']['duration']
+
+                            item = Listitem()
+                            item.label = video_title
+                            item.art['thumb'] = video_thumb
+                            item.art['landscape'] = video_image
+                            item.info['duration'] = video_duration
+                            item.set_callback(get_video_url,
+                                              item_id=item_id,
+                                              video_id=video_id)
+                            item_post_treatment(item,
+                                                is_playable=True,
+                                                is_downloadable=True)
+                            yield item
+                        break
+                except KeyError:
+                    continue
+            break
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/us/abcnews.py
 
 
 @Resolver.register
@@ -132,12 +161,8 @@ def get_video_url(plugin,
     return stream_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE_STREAM)
     json_parser = json.loads(resp.text)

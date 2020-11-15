@@ -48,13 +48,6 @@ URL_INFO_STREAM_LIVE = URL_ROOT + '/js/app.%s.js'
 URL_API_LEQUIPE = URL_ROOT + '/equipehd/applis/filtres/videosfiltres.json'
 
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_programs(plugin, item_id)
-
-
 @Route.register
 def list_programs(plugin, item_id, **kwargs):
 
@@ -118,21 +111,12 @@ def get_video_url(plugin,
                                                  download_mode)
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE,
                         headers={'User-Agent': web_utils.get_random_ua()},
                         max_age=-1)
-    js_live_id = re.compile(r'\/js\/app\.(.*?)\.',
-                            re.DOTALL).findall(resp.text)[0]
-    resp2 = urlquick.get(URL_INFO_STREAM_LIVE % js_live_id,
-                         headers={'User-Agent': web_utils.get_random_ua()},
-                         max_age=-1)
-    live_id = re.compile(r'channelLiveDmId\:\"(.*?)\"',
-                         re.DOTALL).findall(resp2.text)[0]
+    live_id = re.compile(r'video-id\=\"(.*?)\"',
+                         re.DOTALL).findall(resp.text)[0]
     return resolver_proxy.get_stream_dailymotion(plugin, live_id, False)

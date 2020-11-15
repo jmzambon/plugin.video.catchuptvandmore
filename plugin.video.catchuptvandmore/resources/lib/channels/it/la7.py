@@ -52,6 +52,7 @@ URL_DAYS = URL_ROOT + '/rivedila7/0/%s'
 URL_LIVE = URL_ROOT + '/dirette-tv'
 
 URL_LICENCE_KEY = 'https://la7.prod.conax.cloud/widevine/license|Content-Type=&User-Agent=Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3041.0 Safari/537.36&preauthorization=%s|R{SSM}|'
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/it/la7.py
 
 
 def replay_entry(plugin, item_id, **kwargs):
@@ -59,6 +60,8 @@ def replay_entry(plugin, item_id, **kwargs):
     First executed function after replay_bridge
     """
     return list_days(plugin, item_id)
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/it/la7.py
 
 
 @Route.register
@@ -139,12 +142,16 @@ def get_video_url(plugin,
             'csmil', 'urlset')
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
+
+    if get_kodi_version() < 18:
+        xbmcgui.Dialog().ok('Info', plugin.localize(30602))
+        return False
+
+    is_helper = inputstreamhelper.Helper('mpd', drm='widevine')
+    if not is_helper.check_inputstream():
+        return False
 
     if get_kodi_version() < 18:
         xbmcgui.Dialog().ok('Info', plugin.localize(30602))

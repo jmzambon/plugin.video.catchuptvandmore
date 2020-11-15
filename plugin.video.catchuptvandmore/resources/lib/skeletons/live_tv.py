@@ -30,133 +30,204 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 TV_GUIDE = Script.setting.get_boolean('tv_guide')
 
 menu = {
     'fr_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'tv_guide_menu'
         if TV_GUIDE else 'generic_menu',
+=======
+        'route': '/resources/lib/main:tv_guide_menu'
+        if TV_GUIDE else '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30050,
         'thumb': 'channels/fr.png',
         'enabled': True,
         'order': 1
     },
     'ch_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30051,
         'thumb': 'channels/ch.png',
         'enabled': True,
         'order': 2
     },
     'uk_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'tv_guide_menu'
         if TV_GUIDE else 'generic_menu',
+=======
+        'route': '/resources/lib/main:tv_guide_menu'
+        if TV_GUIDE else '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30052,
         'thumb': 'channels/uk.png',
         'enabled': True,
         'order': 3
     },
     'wo_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30053,
         'thumb': 'channels/wo.png',
         'enabled': True,
         'order': 4
     },
     'be_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'tv_guide_menu'
         if TV_GUIDE else 'generic_menu',
+=======
+        'route': '/resources/lib/main:tv_guide_menu'
+        if TV_GUIDE else '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30054,
         'thumb': 'channels/be.png',
         'enabled': True,
         'order': 5
     },
     'jp_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30055,
         'thumb': 'channels/jp.png',
         'enabled': True,
         'order': 6
     },
     'ca_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30056,
         'thumb': 'channels/ca.png',
         'enabled': True,
         'order': 7
     },
     'us_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30057,
         'thumb': 'channels/us.png',
         'enabled': True,
         'order': 8
     },
     'pl_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30058,
         'thumb': 'channels/pl.png',
         'enabled': True,
         'order': 9
     },
     'es_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30059,
         'thumb': 'channels/es.png',
         'enabled': True,
         'order': 10
     },
     'tn_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30060,
         'thumb': 'channels/tn.png',
         'enabled': True,
         'order': 11
     },
     'it_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'tv_guide_menu'
         if TV_GUIDE else 'generic_menu',
+=======
+        'route': '/resources/lib/main:tv_guide_menu'
+        if TV_GUIDE else '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30061,
         'thumb': 'channels/it.png',
         'enabled': True,
         'order': 12
     },
     'nl_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30062,
         'thumb': 'channels/nl.png',
         'enabled': True,
         'order': 13
     },
     'cn_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30063,
         'thumb': 'channels/cn.png',
         'enabled': True,
         'order': 14
     },
     'cm_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30064,
         'thumb': 'channels/cm.png',
         'enabled': True,
         'order': 15
     },
     'si_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30065,
         'thumb': 'channels/si.png',
         'enabled': True,
         'order': 16
     },
     'et_live': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/live_tv.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/live_tv.py
         'label': 30066,
         'thumb': 'channels/et.png',
         'enabled': True,

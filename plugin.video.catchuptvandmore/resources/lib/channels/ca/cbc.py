@@ -60,12 +60,17 @@ LIVE_CBC_REGIONS = {
 }
 
 
+<<<<<<< HEAD
 def live_entry(plugin, item_id, **kwargs):
     return get_live_url(plugin, item_id, item_id.upper())
 
 
 @Resolver.register
 def get_live_url(plugin, item_id, video_id, **kwargs):
+=======
+@Resolver.register
+def get_live_url(plugin, item_id, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
     final_region = kwargs.get('language', Script.setting['cbc.language'])
     region = utils.ensure_unicode(final_region)

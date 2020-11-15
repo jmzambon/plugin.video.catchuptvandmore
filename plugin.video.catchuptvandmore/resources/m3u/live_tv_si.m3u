@@ -6,30 +6,54 @@
 ##	TV SLO 1
 ##	slo1
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/slo1.png" group-title="Slovenia",TV SLO 1
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=slo1&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=slo1
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	TV SLO 2
 ##	slo2
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/slo2.png" group-title="Slovenia",TV SLO 2
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=slo2&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=slo2
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	TV SLO 3
 ##	slo3
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/slo3.png" group-title="Slovenia",TV SLO 3
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=slo3&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=slo3
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	Koper
 ##	koper
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/koper.png" group-title="Slovenia",Koper
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=koper&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=koper
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	Maribor
 ##	maribor
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/maribor.png" group-title="Slovenia",Maribor
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=maribor&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=maribor
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
 ##	MMC
 ##	mmc
 #EXTINF:-1 tvg-id="" tvg-logo="resource://resource.images.catchuptvandmore/channels/si/mmc.png" group-title="Slovenia",MMC
+<<<<<<< HEAD
 plugin://plugin.video.catchuptvandmore/resources/lib/main/live_bridge/?item_id=mmc&item_module=resources.lib.channels.si.rtvslo&item_dict={}
+=======
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/si/rtvslo/get_live_url/?item_id=mmc
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 

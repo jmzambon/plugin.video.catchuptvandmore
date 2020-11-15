@@ -29,113 +29,172 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'fr_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30050,
         'thumb': 'channels/fr.png',
         'enabled': True,
         'order': 1
     },
     'ch_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30051,
         'thumb': 'channels/ch.png',
         'enabled': True,
         'order': 2
     },
     'uk_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30052,
         'thumb': 'channels/uk.png',
         'enabled': True,
         'order': 3
     },
     'wo_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30053,
         'thumb': 'channels/wo.png',
         'enabled': True,
         'order': 4
     },
     'be_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30054,
         'thumb': 'channels/be.png',
         'enabled': True,
         'order': 5
     },
     'jp_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30055,
         'thumb': 'channels/jp.png',
         'enabled': True,
         'order': 6
     },
     'ca_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30056,
         'thumb': 'channels/ca.png',
         'enabled': True,
         'order': 7
     },
     'us_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30057,
         'thumb': 'channels/us.png',
         'enabled': True,
         'order': 8
     },
     'pl_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30058,
         'thumb': 'channels/us.png',
         'enabled': False,
         'order': 9
     },
     'es_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30059,
         'thumb': 'channels/es.png',
         'enabled': False,
         'order': 10
     },
     'tn_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30060,
         'thumb': 'channels/tn.png',
         'enabled': True,
         'order': 11
     },
     'it_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30061,
         'thumb': 'channels/it.png',
         'enabled': True,
         'order': 12
     },
     'nl_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30062,
         'thumb': 'channels/nl.png',
         'enabled': True,
         'order': 13
     },
     'cn_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30063,
         'thumb': 'channels/nl.png',
         'enabled': False,
         'order': 14
     },
     'cm_replay': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/replay.py
         'callback': 'generic_menu',
+=======
+        'route': '/resources/lib/main:generic_menu',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/replay.py
         'label': 30064,
         'thumb': 'channels/cm.png',
         'enabled': False,

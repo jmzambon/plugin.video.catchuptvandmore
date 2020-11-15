@@ -31,6 +31,7 @@ from codequick import Route, Resolver, Listitem, utils, Script
 from resources.lib import web_utils
 from resources.lib import download
 from resources.lib.menu_utils import item_post_treatment
+from resources.lib import resolver_proxy
 
 import json
 import re
@@ -45,9 +46,6 @@ from kodi_six import xbmcgui
 URL_ROOT = 'https://www.arte.tv/%s/'
 # Language
 
-URL_REPLAY_ARTE = 'https://api.arte.tv/api/player/v1/config/%s/%s'
-# desired_language, videoid
-
 URL_LIVE_ARTE = 'https://api.arte.tv/api/player/v1/livestream/%s'
 # Langue, ...
 
@@ -58,8 +56,6 @@ URL_VIDEOS_2 = 'http://www.arte.tv/hbbtvv2/services/web/index.php/OPA/v3/videos/
 # VideosCode, Page, language
 
 DESIRED_LANGUAGE = Script.setting['arte.language']
-
-DESIRED_QUALITY = Script.setting['quality']
 
 CORRECT_MONTH = {
     'Jan': '01',
@@ -75,13 +71,6 @@ CORRECT_MONTH = {
     'Nov': '11',
     'Dec': '12'
 }
-
-
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
 
 
 @Route.register
@@ -160,7 +149,10 @@ def list_sub_categories(plugin, item_id, category_url, **kwargs):
         elif 'playlists' in sub_category_datas['code']['name'] or \
                 'collections' in sub_category_datas['code']['name'] or \
                 'magazines' in sub_category_datas['code']['name'] or \
-                'ARTE_CONCERT' in sub_category_datas['code']['name']:
+                'ARTE_CONCERT' in sub_category_datas['code']['name'] or \
+                'highlights_category' in sub_category_datas['code']['name'] or \
+                '-' in sub_category_datas['code']['name'] or \
+                'collection_subcollection' in sub_category_datas['code']['name']:
             sub_category_title = sub_category_datas['title']
             sub_category_code_name = sub_category_datas['code']['name']
             sub_category_url = category_url
@@ -198,7 +190,31 @@ def list_programs(plugin, item_id, sub_category_code_name, sub_category_url,
             'zones']:
         if sub_category_datas['code']['name'] == sub_category_code_name:
             for program_datas in sub_category_datas['data']:
-                if program_datas['programId'] is not None and 'RC-' in program_datas['programId']:
+                if program_datas["kind"]["isCollection"]:
+                    program_title = program_datas['title']
+                    program_url = program_datas['url']
+                    program_image = ''
+                    if program_datas['images']['landscape'] is not None:
+                        if 'resolutions' in program_datas['images']['landscape']:
+                            for image_datas in program_datas['images']['landscape'][
+                                    'resolutions']:
+                                program_image = image_datas['url']
+                    elif program_datas['images']['square'] is not None:
+                        if 'resolutions' in program_datas['images']['square']:
+                            for image_datas in program_datas['images']['square'][
+                                    'resolutions']:
+                                program_image = image_datas['url']
+
+                    item = Listitem()
+                    item.label = program_title
+                    item.art['thumb'] = item.art['landscape'] = program_image
+                    item.set_callback(
+                        list_sub_categories,
+                        item_id=item_id,
+                        category_url=program_url)
+                    item_post_treatment(item)
+                    yield item
+                elif program_datas['programId'] is not None and 'RC-' in program_datas['programId']:
                     program_title = program_datas['title']
                     program_id = program_datas['programId']
                     program_image = ''
@@ -424,7 +440,7 @@ def list_videos_program_concert(plugin, item_id, program_url,
                                 **kwargs):
 
     if '/api/' in program_url:
-        resp = urlquick.get(program_url.replace('https://api-internal.arte.tv', 'https://www.arte.tv/guide'))
+        resp = urlquick.get(program_url.replace('https://api-internal.arte.tv', 'https://www.arte.tv/guide').replace(" ", ""))
         json_parser = json.loads(resp.text)
         for video_datas in json_parser['data']:
             if video_datas['subtitle'] is not None:
@@ -459,7 +475,7 @@ def list_videos_program_concert(plugin, item_id, program_url,
             yield Listitem.next_page(item_id=item_id,
                                      program_url=json_parser['nextPage'])
     else:
-        resp = urlquick.get(program_url)
+        resp = urlquick.get(program_url.replace(" ", ""))
         json_value = re.compile(r'_INITIAL_STATE__ \= (.*?)\}\;').findall(
             resp.text)[0]
         json_parser = json.loads(json_value + '}')
@@ -507,6 +523,7 @@ def get_video_url(plugin,
                   download_mode=False,
                   **kwargs):
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/wo/arte.py
     resp = urlquick.get(URL_REPLAY_ARTE % (DESIRED_LANGUAGE.lower(), video_id))
     json_parser = json.loads(resp.text)
 
@@ -545,10 +562,16 @@ def get_video_url(plugin,
 
 def live_entry(plugin, item_id, **kwargs):
     return get_live_url(plugin, item_id, item_id.upper())
+=======
+    return resolver_proxy.get_arte_video_stream(plugin,
+                                                DESIRED_LANGUAGE.lower(),
+                                                video_id,
+                                                download_mode)
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/wo/arte.py
 
 
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
     final_language = kwargs.get('language', DESIRED_LANGUAGE)
 
     resp = urlquick.get(URL_LIVE_ARTE % final_language.lower())

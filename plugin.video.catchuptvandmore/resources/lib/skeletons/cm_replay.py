@@ -30,10 +30,16 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
+<<<<<<< HEAD
     - callback: Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
     - module: Item module to load in order to work (like 6play.py)
+=======
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
+    - thumb: Item thumb path relative to "media" folder
+    - fanart: Item fanart path relative to "meia" folder
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 """
 
 menu = {}

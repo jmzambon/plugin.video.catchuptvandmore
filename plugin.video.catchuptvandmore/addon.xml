@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<<<<<<< HEAD:plugin.video.catchuptvandmore/addon.xml
 <addon id="plugin.video.catchuptvandmore" name="Catch-up TV &amp; More" version="0.2.22" provider-name="SylvainCecchetto,wwark">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
     <import addon="script.module.codequick" version="0.9.12"/>
+=======
+<addon id="plugin.video.catchuptvandmore" name="Catch-up TV &amp; More" version="0.2.28~beta03" provider-name="SylvainCecchetto,wwark">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="script.module.codequick" version="0.9.13"/>
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:addon.xml
     <import addon="script.module.youtube.dl" version="18.225.0"/>
     <import addon="script.module.requests" version="2.12.4"/>
     <import addon="script.module.pytz" version="2014.2"/>
@@ -21,7 +28,11 @@
   <extension point="xbmc.addon.metadata">
     <!-- Set reuselanguageinvoker to false while developing the addon, making it only true for the production version -->
     <!-- See https://kodi.wiki/view/Addon.xml#.3Creuselanguageinvoker.3E -->
+<<<<<<< HEAD:plugin.video.catchuptvandmore/addon.xml
     <!-- <reuselanguageinvoker>false</reuselanguageinvoker> -->
+=======
+    <reuselanguageinvoker>false</reuselanguageinvoker>
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:addon.xml
     <summary lang="fr_FR">Catch-Up TV &amp; More : Replay TV, Live TV et bien plus encore.</summary>
     <description lang="fr_FR">Catch-Up TV &amp; More regroupe dans un même plugin Kodi l'ensemble des vidéos des différents services et chaînes de Replay TV (rattrapage TV) ainsi que l'accès au direct. De plus, cette extension vous permet d'accéder rapidement aux vidéos et contenus proposés par certains sites internet.</description>
     <disclaimer lang="fr_FR">Retours de bugs, propositions d'améliorations ou d'ajout de contenus sont les bienvenue ! GitHub ou e-mail.</disclaimer>
@@ -42,6 +53,7 @@
     <email>catch.up.tv.and.more at gmail dot com</email>
     <source>https://github.com/Catch-up-TV-and-More/plugin.video.catchuptvandmore</source>
     <news>
+<<<<<<< HEAD:plugin.video.catchuptvandmore/addon.xml
 [Version 0.2.22]
 [Fix/Improve] Website - INA
 [Fix] Catch-up - TVER (JP)
@@ -59,6 +71,16 @@
 [Add] Live TV - Ethiopian channels (ET) (fix #305)
 [Merge] RMC Story and RMC Découverte module (FR)
 [Add] Live TV - Antenne Centre TV (BE) (fix #286)
+=======
+[Version 0.2.28]
+[BE - TV Lux] Fix Live TV
+[FR - CulturePub] Fix WebSite
+[BE - RTBF] Fix Catch-up TV
+[CA - TVA] Fix Live TV and re-add LCN Live TV
+[FR - L'Equipe TV] Fix Live TV
+----
+Visit WebSite - http://mpdb.tv/#home which host the french forum used by users of CU TV and More
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:addon.xml
     </news>
     <assets>
       <icon>icon.png</icon>

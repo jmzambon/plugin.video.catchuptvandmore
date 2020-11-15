@@ -47,20 +47,15 @@ except ImportError:
 
 URL_ROOT = 'https://videos.tva.ca'
 
-URL_LIVE = URL_ROOT + '/page/direct'
-
 URL_EMISSIONS = URL_ROOT + '/page/touslescontenus'
 
 URL_VIDEOS = URL_ROOT + '/page/rattrapage'
 
 URL_SEARCH = URL_ROOT + '/search'
 
+URL_ROOT_2 = 'https://www.qub.ca/tvaplus'
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
+URL_LIVE = URL_ROOT_2 + '/%s/en-direct'
 
 
 @Route.register
@@ -226,13 +221,10 @@ def get_video_url(plugin,
                                                     download_mode)
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/tva.py
     resp = urlquick.get(URL_LIVE)
     json_parser = json.loads(
         re.compile(r'__INITIAL_STATE__ = (.*?)\}\;').findall(resp.text)[0] +
@@ -247,3 +239,8 @@ def get_live_url(plugin, item_id, video_id, **kwargs):
     data_player = re.compile(r'playerId":"(.*?)"').findall(resp.text)[0]
     return resolver_proxy.get_brightcove_video_json(plugin, data_account,
                                                     data_player, asset_id_value)
+=======
+    resp = urlquick.get(URL_LIVE % item_id)
+    return re.compile(
+        r'videoSourceUrl\"\:\"(.*?)\"').findall(resp.text)[0]
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/tva.py

@@ -30,37 +30,45 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'tbd': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/us/tbd:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_replay.py
         'label': 'TBD',
         'thumb': 'channels/us/tbd.png',
         'fanart': 'channels/us/tbd_fanart.jpg',
-        'module': 'resources.lib.channels.us.tbd',
         'enabled': True,
         'order': 2
     },
     'nycmedia': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/us/nycmedia:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_replay.py
         'label': 'NYC Media',
         'thumb': 'channels/us/nycmedia.png',
         'fanart': 'channels/us/nycmedia_fanart.jpg',
-        'module': 'resources.lib.channels.us.nycmedia',
         'enabled': True,
         'order': 3
     },
     'abcnews': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_replay.py
         'callback': 'replay_bridge',
+=======
+        'route': '/resources/lib/channels/us/abcnews:list_programs',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_replay.py
         'label': 'ABC News',
         'thumb': 'channels/us/abcnews.png',
         'fanart': 'channels/us/abcnews_fanart.jpg',
-        'module': 'resources.lib.channels.us.abcnews',
         'enabled': True,
         'order': 4
     }

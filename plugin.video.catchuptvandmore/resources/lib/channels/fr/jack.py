@@ -37,12 +37,13 @@ import json
 import urlquick
 
 # TO DO
-# ....
+# Add More Pages
 
 URL_API = 'https://api.canalplus.pro'
 # ChannelName
 
 URL_VIDEOS = URL_API + '/creativemedia/video'
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/jack.py
 
 # PageId
 
@@ -52,6 +53,8 @@ def replay_entry(plugin, item_id, **kwargs):
     First executed function after replay_bridge
     """
     return list_programs(plugin, item_id)
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/jack.py
 
 
 @Route.register
@@ -64,13 +67,21 @@ def list_programs(plugin, item_id, **kwargs):
     - ...
     """
     headers = {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/jack.py
         'X-MINISITE-DOMAIN':
         'jack.mycanal.fr',
+=======
+        'x-minisite-domain':
+        'jack.canalplus.com',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/jack.py
         'User-Agent':
         web_utils.get_random_ua()
     }
     resp = urlquick.get(URL_VIDEOS, headers=headers)
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/jack.py
     print(repr(resp.text))
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/jack.py
     json_parser = json.loads(resp.text)
 
     for program_datas in json_parser["blocks"]:
@@ -91,7 +102,11 @@ def list_videos(plugin, item_id, program_title, **kwargs):
 
     headers = {
         'X-MINISITE-DOMAIN':
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/jack.py
         'jack.mycanal.fr',
+=======
+        'jack.canalplus.com',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/jack.py
         'User-Agent':
         web_utils.get_random_ua()
     }

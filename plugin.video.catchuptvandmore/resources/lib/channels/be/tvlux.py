@@ -47,12 +47,7 @@ URL_VIDEOS = URL_ROOT + '/videos'
 
 URL_EMISSIONS = URL_ROOT + '/emissions'
 
-
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
+URL_LIVE_DATAS = 'https://player.freecaster.com/embed/%s.js'
 
 
 @Route.register
@@ -137,7 +132,8 @@ def get_video_url(plugin,
                   **kwargs):
 
     resp = urlquick.get(video_url, max_age=-1)
-    list_streams_datas = re.compile(r'src\: "(.*?)"').findall(resp.text)
+    list_streams_datas = re.compile(
+        r'source src\=\"(.*?)\"').findall(resp.text)
     stream_url = ''
     for stream_datas in list_streams_datas:
         if 'm3u8' in stream_datas or \
@@ -149,12 +145,13 @@ def get_video_url(plugin,
     return stream_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE, max_age=-1)
-    return re.compile(r'"sourceURL":"(.*?)"').findall(resp.text)[0]
+    list_live_datas = re.compile(
+        r'player\.freecaster\.com\/embed\/(.*?)\.js').findall(resp.text)[0]
+
+    resp2 = urlquick.get(URL_LIVE_DATAS % list_live_datas, max_age=-1)
+    return re.compile(
+        r'file\"\:\"(.*?)\"').findall(resp2.text.replace('\\', ''))[1]

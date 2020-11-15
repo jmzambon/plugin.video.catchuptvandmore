@@ -30,6 +30,7 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
+<<<<<<< HEAD
     - callback: Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
@@ -43,6 +44,19 @@ menu = {
         'thumb': 'channels/es/mitele.png',
         'fanart': 'channels/es/mitele_fanart.jpg',
         'module': 'resources.lib.channels.es.mitele',
+=======
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
+    - thumb: Item thumb path relative to "media" folder
+    - fanart: Item fanart path relative to "meia" folder
+"""
+
+menu = {
+    'rtve': {
+        'route': '/resources/lib/channels/es/rtve:list_categories',
+        'label': 'RTVE Alacarta',
+        'thumb': 'channels/es/rtve.png',
+        'fanart': 'channels/es/rtve_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 1
     }

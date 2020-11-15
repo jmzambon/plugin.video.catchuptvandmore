@@ -30,32 +30,46 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'slo1': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/si_live.py
         'callback': 'live_bridge',
         'label': 'TV SLO 1',
         'thumb': 'channels/si/slo1.png',
         'fanart': 'channels/si/slo1_fanart.jpg',
         'module': 'resources.lib.channels.si.rtvslo',
+=======
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'TV SLO 1',
+        'thumb': 'channels/si/slo1.png',
+        'fanart': 'channels/si/slo1_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ca_live.py
         'enabled': True,
         'order': 1
     },
     'slo2': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/si_live.py
         'callback': 'live_bridge',
         'label': 'TV SLO 2',
         'thumb': 'channels/si/slo2.png',
         'fanart': 'channels/si/slo2_fanart.jpg',
         'module': 'resources.lib.channels.si.rtvslo',
+=======
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'TV SLO 2',
+        'thumb': 'channels/si/slo2.png',
+        'fanart': 'channels/si/slo2_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ca_live.py
         'enabled': True,
         'order': 2
     },
     'slo3': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/si_live.py
         'callback': 'live_bridge',
         'label': 'TV SLO 3',
         'thumb': 'channels/si/slo3.png',
@@ -89,6 +103,37 @@ menu = {
         'fanart': 'channels/si/mmc_fanart.jpg',
         'module': 'resources.lib.channels.si.rtvslo',
         'enabled': True,
+=======
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'TV SLO 3',
+        'thumb': 'channels/si/slo3.png',
+        'fanart': 'channels/si/slo3_fanart.jpg',
+        'enabled': True,
+        'order': 3
+    },
+    'koper': {
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'Koper',
+        'thumb': 'channels/si/koper.png',
+        'fanart': 'channels/si/koper_fanart.jpg',
+        'enabled': True,
+        'order': 4
+    },
+    'maribor': {
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'Maribor',
+        'thumb': 'channels/si/maribor.png',
+        'fanart': 'channels/si/maribor_fanart.jpg',
+        'enabled': True,
+        'order': 5
+    },
+    'mmc': {
+        'resolver': '/resources/lib/channels/si/rtvslo:get_live_url',
+        'label': 'MMC',
+        'thumb': 'channels/si/mmc.png',
+        'fanart': 'channels/si/mmc_fanart.jpg',
+        'enabled': True,
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/ca_live.py
         'order': 6
     }
 }

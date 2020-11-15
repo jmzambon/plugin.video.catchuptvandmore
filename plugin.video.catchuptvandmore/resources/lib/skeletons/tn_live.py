@@ -30,37 +30,45 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'watania1': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/tn_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/tn/watania:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/tn_live.py
         'label': 'التلفزة التونسية الوطنية 1',
         'thumb': 'channels/tn/watania1.png',
         'fanart': 'channels/tn/watania1_fanart.jpg',
-        'module': 'resources.lib.channels.tn.watania',
         'enabled': True,
         'order': 1
     },
     'watania2': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/tn_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/tn/watania:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/tn_live.py
         'label': 'التلفزة التونسية الوطنية 2',
         'thumb': 'channels/tn/watania2.png',
         'fanart': 'channels/tn/watania2_fanart.jpg',
-        'module': 'resources.lib.channels.tn.watania',
         'enabled': True,
         'order': 2
     },
     'nessma': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/tn_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/tn/nessma:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/tn_live.py
         'label': 'نسمة تي في',
         'thumb': 'channels/tn/nessma.png',
         'fanart': 'channels/tn/nessma_fanart.jpg',
-        'module': 'resources.lib.channels.tn.nessma',
         'enabled': True,
         'order': 3
     }

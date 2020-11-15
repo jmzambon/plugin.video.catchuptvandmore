@@ -49,13 +49,6 @@ URL_STREAM_LIVE = 'https://telemb.fcst.tv/player/embed/%s'
 # LiveId
 
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_programs(plugin, item_id)
-
-
 @Route.register
 def list_programs(plugin, item_id, **kwargs):
 
@@ -124,22 +117,13 @@ def get_video_url(plugin,
     return final_video_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     resp = urlquick.get(URL_LIVE, max_age=-1)
-    live_id = re.compile(r'telemb.fcst.tv/player/embed\/(.*?)[\?\"]').findall(
-        resp.text)[0]
-    resp2 = urlquick.get(URL_STREAM_LIVE % live_id, max_age=-1)
-    list_streams = re.compile(
-        r'file\"\:\"(.*?)\"').findall(resp2.text)
+    root = resp.parse()
+    live_datas = root.findall('.//iframe')[0].get('src')
 
-    url_stream = 'https:'
-    for url_stream_datas in list_streams:
-        if 'm3u8' in url_stream_datas:
-            url_stream = url_stream + url_stream_datas.replace('/', '')
-    return url_stream
+    resp2 = urlquick.get(live_datas, max_age=-1)
+    return re.compile(
+        r'file\"\:\"(.*?)\"').findall(resp2.text)[2]

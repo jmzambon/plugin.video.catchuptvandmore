@@ -74,13 +74,6 @@ URL_LIVE_BFMBUSINESS = 'http://bfmbusiness.bfmtv.com/mediaplayer/live-video/'
 DESIRED_QUALITY = Script.setting['quality']
 
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_programs(plugin, item_id)
-
-
 def get_token(item_id):
     """Get session token"""
     resp = urlquick.get(URL_TOKEN % item_id)
@@ -172,6 +165,7 @@ def get_video_url(plugin,
     resp = urlquick.get(URL_VIDEO % (item_id, get_token(item_id), video_id))
     json_parser = json.loads(resp.text)
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/fr/bfmtv.py
     video_streams = json_parser['video']['medias']
     final_video_url = ''
     if DESIRED_QUALITY == "DIALOG":
@@ -200,35 +194,83 @@ def get_video_url(plugin,
         for datas in video_streams:
             url_best_quality = datas['video_url']
         final_video_url = url_best_quality
+=======
+    if item_id == 'bfmtv' or item_id == 'bfmbusiness':
+        stream_infos_url = json_parser['video']['long_url']
+
+        resp2 = urlquick.get(stream_infos_url,
+                             headers={'User-Agent': web_utils.get_random_ua()},
+                             max_age=-1)
+
+        root = resp2.parse()
+        live_datas = root.find(".//div[@class='video_block']")
+        data_account = live_datas.get('accountid')
+        data_video_id = live_datas.get('videoid')
+        data_player = live_datas.get('playerid')
+        return resolver_proxy.get_brightcove_video_json(plugin, data_account,
+                                                        data_player, data_video_id,
+                                                        download_mode)
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/fr/bfmtv.py
     else:
-        # DEFAULT VIDEO
-        final_video_url = json_parser['video']['video_url']
+        video_streams = json_parser['video']['medias']
+        final_video_url = ''
+        if DESIRED_QUALITY == "DIALOG":
+            all_datas_videos_quality = []
+            all_datas_videos_path = []
 
-    if download_mode:
-        return download.download_video(final_video_url)
-    return final_video_url
+            for datas in video_streams:
+                all_datas_videos_quality.append("Video Height : " +
+                                                str(datas['frame_height']) +
+                                                " (Encoding : " +
+                                                str(datas['encoding_rate']) + ")")
+                all_datas_videos_path.append(datas['video_url'])
 
+            seleted_item = xbmcgui.Dialog().select(
+                plugin.localize(30709),
+                all_datas_videos_quality)
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
+            if seleted_item > -1:
+                final_video_url = all_datas_videos_path[seleted_item]
+            else:
+                return False
+
+        elif DESIRED_QUALITY == 'BEST':
+            # GET LAST NODE (VIDEO BEST QUALITY)
+            url_best_quality = ''
+            for datas in video_streams:
+                url_best_quality = datas['video_url']
+            final_video_url = url_best_quality
+        else:
+            # DEFAULT VIDEO
+            final_video_url = json_parser['video']['video_url']
+
+        if download_mode:
+            return download.download_video(final_video_url)
+        return final_video_url
 
 
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
     if item_id == 'bfmtv':
         resp = urlquick.get(URL_LIVE_BFMTV,
                             headers={'User-Agent': web_utils.get_random_ua()},
                             max_age=-1)
+        root = resp.parse()
+        live_datas = root.find(".//div[@class='video_block']")
+        data_account = live_datas.get('accountid')
+        data_video_id = live_datas.get('videoid')
+        data_player = live_datas.get('playerid')
+        return resolver_proxy.get_brightcove_video_json(plugin, data_account,
+                                                        data_player, data_video_id)
     elif item_id == 'bfmbusiness':
         resp = urlquick.get(URL_LIVE_BFMBUSINESS,
                             headers={'User-Agent': web_utils.get_random_ua()},
                             max_age=-1)
-
-    root = resp.parse()
-    live_datas = root.find(".//div[@class='next-player']")
-    data_account = live_datas.get('data-account')
-    data_video_id = live_datas.get('data-video-id')
-    data_player = live_datas.get('data-player')
-    return resolver_proxy.get_brightcove_video_json(plugin, data_account,
-                                                    data_player, data_video_id)
+        root = resp.parse()
+        live_datas = root.find(".//div[@class='video_block']")
+        data_account = live_datas.get('accountid')
+        data_video_id = live_datas.get('videoid')
+        data_player = live_datas.get('playerid')
+        return resolver_proxy.get_brightcove_video_json(plugin, data_account,
+                                                        data_player, data_video_id)

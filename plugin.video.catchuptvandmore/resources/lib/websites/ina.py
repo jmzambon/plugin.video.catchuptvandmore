@@ -45,6 +45,7 @@ URL_STREAM = 'https://player.ina.fr/notices/%s'
 # VideoId
 
 
+<<<<<<< HEAD
 def website_entry(plugin, item_id, **kwargs):
     """
     First executed function after website_bridge
@@ -53,6 +54,10 @@ def website_entry(plugin, item_id, **kwargs):
 
 
 def root(plugin, **kwargs):
+=======
+@Route.register
+def website_root(plugin, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
     """Build root listing"""
     categories = [
         ('Thèmes', list_subcategories, 'themes', ''),

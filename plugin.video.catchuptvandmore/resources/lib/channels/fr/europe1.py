@@ -43,12 +43,17 @@ URL_ROOT = "https://api.lejdd.fr"
 URL_LIVE = URL_ROOT + '/v2/data/live/'
 
 
+<<<<<<< HEAD
 def live_entry(plugin, item_id, **kwargs):
     return get_live_url(plugin, item_id, item_id.upper())
 
 
 @Resolver.register
 def get_live_url(plugin, item_id, video_id, **kwargs):
+=======
+@Resolver.register
+def get_live_url(plugin, item_id, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 
     resp = urlquick.get(
         URL_LIVE, headers={"User-Agent": web_utils.get_random_ua()}, max_age=-1)

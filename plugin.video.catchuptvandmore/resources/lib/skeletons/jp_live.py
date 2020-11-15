@@ -30,37 +30,45 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'ntvnews24': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/jp_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/jp/ntvnews24:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/jp_live.py
         'label': '日テレ News24',
         'thumb': 'channels/jp/ntvnews24.png',
         'fanart': 'channels/jp/ntvnews24_fanart.jpg',
-        'module': 'resources.lib.channels.jp.ntvnews24',
         'enabled': True,
         'order': 11
     },
     'japanetshoppingdx': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/jp_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/jp/japanetshoppingdx:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/jp_live.py
         'label': 'ジャパネットチャンネルDX',
         'thumb': 'channels/jp/japanetshoppingdx.png',
         'fanart': 'channels/jp/japanetshoppingdx_fanart.jpg',
-        'module': 'resources.lib.channels.jp.japanetshoppingdx',
         'enabled': True,
         'order': 12
     },
     'weathernewsjp': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/jp_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/jp/weathernewsjp:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/jp_live.py
         'label': '株式会社ウェザーニューズ',
         'thumb': 'channels/jp/weathernewsjp.png',
         'fanart': 'channels/jp/weathernewsjp_fanart.jpg',
-        'module': 'resources.lib.channels.jp.weathernewsjp',
         'enabled': True,
         'order': 14
     }

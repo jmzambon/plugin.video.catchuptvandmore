@@ -30,37 +30,64 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
+<<<<<<< HEAD
     - callback: Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
     - module: Item module to load in order to work (like 6play.py)
+=======
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
+    - thumb: Item thumb path relative to "media" folder
+    - fanart: Item fanart path relative to "meia" folder
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
 """
 
 menu = {
     'telequebec': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'Télé-Québec',
         'thumb': 'channels/ca/telequebec.png',
         'fanart': 'channels/ca/telequebec_fanart.jpg',
         'module': 'resources.lib.channels.ca.telequebec',
+=======
+        'resolver': '/resources/lib/channels/ca/telequebec:get_live_url',
+        'label': 'Télé-Québec',
+        'thumb': 'channels/ca/telequebec.png',
+        'fanart': 'channels/ca/telequebec_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 4
     },
     'tva': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'TVA',
         'thumb': 'channels/ca/tva.png',
         'fanart': 'channels/ca/tva_fanart.jpg',
         'module': 'resources.lib.channels.ca.tva',
+=======
+        'resolver': '/resources/lib/channels/ca/tva:get_live_url',
+        'label': 'TVA',
+        'thumb': 'channels/ca/tva.png',
+        'fanart': 'channels/ca/tva_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 5
     },
     'icitele': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'ICI Télé (' + utils.ensure_unicode(Script.setting['icitele.language']) + ')',
         'thumb': 'channels/ca/icitele.png',
         'fanart': 'channels/ca/icitele_fanart.jpg',
         'module': 'resources.lib.channels.ca.icitele',
+=======
+        'resolver': '/resources/lib/channels/ca/icitele:get_live_url',
+        'label': 'ICI Télé (' + utils.ensure_unicode(Script.setting['icitele.language']) + ')',
+        'thumb': 'channels/ca/icitele.png',
+        'fanart': 'channels/ca/icitele_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'available_languages': [
             'Vancouver', 'Regina', 'Toronto', 'Edmonton', 'Rimouski',
             'Québec', 'Winnipeg', 'Moncton', 'Ottawa',
@@ -70,15 +97,23 @@ menu = {
         'order': 6
     },
     'ntvca': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'NTV',
         'thumb': 'channels/ca/ntvca.png',
         'fanart': 'channels/ca/ntvca_fanart.jpg',
         'module': 'resources.lib.channels.ca.ntvca',
+=======
+        'resolver': '/resources/lib/channels/ca/ntvca:get_live_url',
+        'label': 'NTV',
+        'thumb': 'channels/ca/ntvca.png',
+        'fanart': 'channels/ca/ntvca_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 7
     },
     'telemag': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'Télé-Mag',
         'thumb': 'channels/ca/telemag.png',
@@ -93,15 +128,36 @@ menu = {
         'thumb': 'channels/ca/vtele.png',
         'fanart': 'channels/ca/vtele_fanart.jpg',
         'module': 'resources.lib.channels.ca.noovo',
+=======
+        'resolver': '/resources/lib/channels/ca/telemag:get_live_url',
+        'label': 'Télé-Mag',
+        'thumb': 'channels/ca/telemag.png',
+        'fanart': 'channels/ca/telemag_fanart.jpg',
+        'enabled': True,
+        'order': 9
+    },
+    'noovo': {
+        'resolver': '/resources/lib/channels/ca/noovo:get_live_url',
+        'label': 'Noovo',
+        'thumb': 'channels/ca/noovo.png',
+        'fanart': 'channels/ca/noovo_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 10
     },
     'cbc': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'CBC (' + utils.ensure_unicode(Script.setting['cbc.language']) + ')',
         'thumb': 'channels/ca/cbc.png',
         'fanart': 'channels/ca/cbc_fanart.jpg',
         'module': 'resources.lib.channels.ca.cbc',
+=======
+        'resolver': '/resources/lib/channels/ca/cbc:get_live_url',
+        'label': 'CBC (' + utils.ensure_unicode(Script.setting['cbc.language']) + ')',
+        'thumb': 'channels/ca/cbc.png',
+        'fanart': 'channels/ca/cbc_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'available_languages': [
             'Ottawa', 'Montreal', 'Charlottetown', 'Fredericton',
             'Halifax', 'Windsor', 'Yellowknife', 'Winnipeg',
@@ -112,21 +168,36 @@ menu = {
         'order': 11
     },
     'lcn': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'LCN',
         'thumb': 'channels/ca/lcn.png',
         'fanart': 'channels/ca/lcn_fanart.jpg',
         'module': 'resources.lib.channels.ca.tva',
+=======
+        'resolver': '/resources/lib/channels/ca/tva:get_live_url',
+        'label': 'LCN',
+        'thumb': 'channels/ca/lcn.png',
+        'fanart': 'channels/ca/lcn_fanart.jpg',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'enabled': True,
         'order': 12
     },
     'yoopa': {
+<<<<<<< HEAD
         'callback': 'live_bridge',
         'label': 'Yoopa',
         'thumb': 'channels/ca/yoopa.png',
         'fanart': 'channels/ca/yoopa_fanart.jpg',
         'module': 'resources.lib.channels.ca.tva',
         'enabled': True,
+=======
+        'resolver': '/resources/lib/channels/ca/tva:get_live_url',
+        'label': 'Yoopa',
+        'thumb': 'channels/ca/yoopa.png',
+        'fanart': 'channels/ca/yoopa_fanart.jpg',
+        'enabled': False,
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3
         'order': 13
     }
 }

@@ -49,13 +49,6 @@ URL_VIDEOS = URL_ROOT + '/videos'
 URL_EMISSIONS = URL_ROOT + '/emissions'
 
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_categories(plugin, item_id)
-
-
 @Route.register
 def list_categories(plugin, item_id, **kwargs):
     """
@@ -151,16 +144,13 @@ def get_video_url(plugin,
     return stream_url
 
 
-def live_entry(plugin, item_id, **kwargs):
-    return get_live_url(plugin, item_id, item_id.upper())
-
-
 @Resolver.register
-def get_live_url(plugin, item_id, video_id, **kwargs):
+def get_live_url(plugin, item_id, **kwargs):
 
-    resp = urlquick.get(URL_LIVE)
+    resp = urlquick.get(URL_LIVE, max_age=-1)
     root = resp.parse()
-    stream_datas_url = 'https:' + root.find('.//iframe').get('src')
-    resp2 = urlquick.get(stream_datas_url)
-    root_2 = resp2.parse()
-    return 'https:' + root_2.find('.//source').get('src')
+    live_datas = root.findall('.//iframe')[0].get('src')
+
+    resp2 = urlquick.get(live_datas, max_age=-1)
+    return re.compile(
+        r'file\"\:\"(.*?)\"').findall(resp2.text)[0]

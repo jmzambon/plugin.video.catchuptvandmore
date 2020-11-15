@@ -50,16 +50,16 @@ URL_VIDEOS = 'https://noovo.ca/index.php/actions/noovo/show/getPaginatedEpisodes
 # Page, SeasonId
 
 URL_LIVE = URL_ROOT + '/en-direct'
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/noovo.py
 
 URL_LIVE_INFOS = URL_ROOT + '/dist/js/noovo.%s.js'
 # Id
 
+=======
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/noovo.py
 
-def replay_entry(plugin, item_id, **kwargs):
-    """
-    First executed function after replay_bridge
-    """
-    return list_programs(plugin, item_id)
+URL_LIVE_INFOS = URL_ROOT + '/dist/js/noovo.%s.js'
+# Id
 
 
 @Route.register
@@ -119,7 +119,7 @@ def list_videos(plugin, item_id, season_url, page, **kwargs):
         root = resp.parse()
 
     for video_datas in root.iterfind(
-            ".//div[@class='card card--video card--sm u-shadow-1']"):
+            ".//div[@class='card card--video']"):
         video_title = video_datas.find(".//img").get('alt')
         video_image = video_datas.find(".//img").get('src')
         video_plot = ''
@@ -168,12 +168,17 @@ def get_video_url(plugin,
                                                     download_mode)
 
 
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/noovo.py
 def live_entry(plugin, item_id, **kwargs):
     return get_live_url(plugin, item_id, item_id.upper())
 
 
 @Resolver.register
 def get_live_url(plugin, item_id, video_id, **kwargs):
+=======
+@Resolver.register
+def get_live_url(plugin, item_id, **kwargs):
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/noovo.py
 
     resp = urlquick.get(
         URL_LIVE, headers={'User-Agent': web_utils.get_random_ua()}, max_age=-1)
@@ -184,7 +189,11 @@ def get_live_url(plugin, item_id, video_id, **kwargs):
         URL_LIVE_INFOS % live_info_id, headers={'User-Agent': web_utils.get_random_ua()}, max_age=-1)
 
     data_account = re.compile(r'data-account\=\"(.*?)\"').findall(resp2.text)[0]
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/channels/ca/noovo.py
     data_player = re.compile(r'data-player\=\"(.*?)\"').findall(resp2.text)[0]
+=======
+    data_player = re.compile(r'data-embed\=\"(.*?)\"').findall(resp2.text)[0]
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/channels/ca/noovo.py
     data_video_id = re.compile(r'data-video-id\=\"(.*?)\"').findall(
         resp2.text)[0]
     return resolver_proxy.get_brightcove_video_json(plugin, data_account,

@@ -30,46 +30,57 @@ The following dictionaries describe
 the addon's tree architecture.
 * Key: item id
 * Value: item infos
-    - callback: Callback function to run once this item is selected
+    - route (folder)/resolver (playable URL): Callback function to run once this item is selected
     - thumb: Item thumb path relative to "media" folder
     - fanart: Item fanart path relative to "meia" folder
-    - module: Item module to load in order to work (like 6play.py)
 """
 
 menu = {
     'cbsnews': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/us/cbsnews:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_live.py
         'label': 'CBS News',
         'thumb': 'channels/us/cbsnews.png',
         'fanart': 'channels/us/cbsnews_fanart.jpg',
-        'module': 'resources.lib.channels.us.cbsnews',
         'enabled': True,
         'order': 1
     },
     'tbd': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/us/tbd:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_live.py
         'label': 'TBD',
         'thumb': 'channels/us/tbd.png',
         'fanart': 'channels/us/tbd_fanart.jpg',
-        'module': 'resources.lib.channels.us.tbd',
         'enabled': True,
         'order': 2
     },
     'abcnews': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/us/abcnews:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_live.py
         'label': 'ABC News',
         'thumb': 'channels/us/abcnews.png',
         'fanart': 'channels/us/abcnews_fanart.jpg',
-        'module': 'resources.lib.channels.us.abcnews',
         'enabled': True,
         'order': 4
     },
     'pbskids': {
+<<<<<<< HEAD:plugin.video.catchuptvandmore/resources/lib/skeletons/us_live.py
         'callback': 'live_bridge',
+=======
+        'resolver': '/resources/lib/channels/us/pbskids:get_live_url',
+>>>>>>> cf69920d1ba10a4558544c5d79d7c35f56d3e2c3:resources/lib/skeletons/us_live.py
         'label': 'PBS Kids',
         'thumb': 'channels/us/pbskids.png',
         'fanart': 'channels/us/pbskids_fanart.jpg',
-        'module': 'resources.lib.channels.us.pbskids',
         'enabled': True,
         'order': 5
     }
